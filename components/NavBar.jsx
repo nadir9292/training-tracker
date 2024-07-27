@@ -4,6 +4,7 @@ import {
   Typography,
   CardBody,
   Card,
+  Button,
 } from '@material-tailwind/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
@@ -54,62 +55,128 @@ const NavList = () => {
 
 const NavBar = () => {
   const [openNav, setOpenNav] = useState(false)
-
-  const handleWindowResize = () => window.innerWidth >= 960 && setOpenNav(false)
+  const [windowWidth, setWindowWidth] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    window.addEventListener('resize', handleWindowResize)
+    setMounted(true)
+    const handleWindowResize = () => setWindowWidth(window.innerWidth)
 
-    return () => {
-      window.removeEventListener('resize', handleWindowResize)
-    }
+    handleWindowResize() // Set initial width
+    window.addEventListener('resize', handleWindowResize)
+    return () => window.removeEventListener('resize', handleWindowResize)
   }, [])
+
+  if (!mounted) {
+    return null // Render nothing while mounting
+  }
 
   return (
     <div>
-      <Navbar
-        className="mx-auto max-w-screen-xl px-6 py-3 bg-transparent"
-        blurred={false}
-        shadow={false}
-      >
-        <div className="flex items-center justify-between text-blue-gray-900">
-          <Typography
-            as="a"
-            href="/"
-            variant="h4"
-            className="mr-4 cursor-pointer py-1.5 hover:scale-125 text-offWhite font-anton"
-          >
-            TRAINING{' '}
-            <span className="italic text-sm font-orbitron underline">
-              tracker
-            </span>
-          </Typography>
-          <div className="hidden lg:block">
-            <NavList />
+      {windowWidth >= 960 ? (
+        <Navbar
+          className="mx-auto max-w-screen-xl px-6 py-3 bg-transparent navbar"
+          blurred={false}
+          shadow={false}
+        >
+          <div className="flex items-center justify-between text-blue-gray-900">
+            <Typography
+              as="a"
+              href="/"
+              variant="h4"
+              className="mr-4 cursor-pointer py-1.5 hover:scale-125 text-offWhite font-anton"
+            >
+              TRAINING{' '}
+              <span className="italic text-sm font-orbitron underline">
+                tracker
+              </span>
+            </Typography>
+            <div className="hidden lg:block">
+              <NavList />
+            </div>
+            {!openNav ? (
+              <Bars3Icon
+                className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
+                onClick={() => setOpenNav(!openNav)}
+              />
+            ) : (
+              <XMarkIcon
+                className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
+                onClick={() => setOpenNav(!openNav)}
+              />
+            )}
           </div>
-          {openNav ? (
-            <Bars3Icon
-              className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
-              onClick={() => setOpenNav(!openNav)}
-            />
-          ) : (
-            <XMarkIcon
-              className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
-              onClick={() => setOpenNav(!openNav)}
-            />
-          )}
-        </div>
-        <Collapse open={openNav} className="rounded-xl">
-          <Card className="my-4 mx-auto w-8/12">
-            <CardBody>
-              <Typography>
-                Use our Tailwind CSS collapse for your website. You can use if
-                for accordion, collapsible items and much more.
-              </Typography>
-            </CardBody>
-          </Card>
-        </Collapse>
-      </Navbar>
+          <Collapse open={openNav} className="rounded-xl">
+            <Card className="my-4 mx-auto w-8/12">
+              <CardBody>
+                <Typography>
+                  Use our Tailwind CSS collapse for your website. You can use if
+                  for accordion, collapsible items and much more.
+                </Typography>
+              </CardBody>
+            </Card>
+          </Collapse>
+        </Navbar>
+      ) : (
+        <Navbar
+          className="mx-auto max-w-screen-xl px-6 py-3 navbar rounded bg-transparent border-none"
+          blurred={true}
+          shadow={false}
+        >
+          <div className="flex items-center justify-between text-blue-gray-900">
+            <div className="flex justify-between">
+              <Button
+                variant="outlined"
+                size="sm"
+                className="bg-transparent border-offWhite mx-2"
+              >
+                <Typography className="font-bold text-offWhite">
+                  toto
+                </Typography>
+              </Button>
+              <Button
+                variant="outlined"
+                size="sm"
+                className="bg-transparent border-offWhite mx-2"
+              >
+                <Typography className="font-bold text-offWhite">
+                  toto
+                </Typography>
+              </Button>
+              <Button
+                variant="outlined"
+                size="sm"
+                className="bg-transparent border-offWhite mx-2"
+              >
+                <Typography className="font-bold text-offWhite">
+                  toto
+                </Typography>
+              </Button>
+            </div>
+            {!openNav ? (
+              <Bars3Icon
+                className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
+                onClick={() => setOpenNav(!openNav)}
+              />
+            ) : (
+              <XMarkIcon
+                className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
+                onClick={() => setOpenNav(!openNav)}
+              />
+            )}
+          </div>
+          <Collapse open={openNav} className="rounded-xl">
+            <Card className="my-4 mx-auto w-8/12">
+              <CardBody>
+                <Typography>
+                  Use our Tailwind CSS collapse for your website. You can use if
+                  for accordion, collapsible items and much more.
+                </Typography>
+              </CardBody>
+            </Card>
+          </Collapse>
+        </Navbar>
+      )}
     </div>
   )
 }

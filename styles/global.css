@@ -30,3 +30,23 @@ body {
     background-image: url('/bg-mobile.png');
   }
 }
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1000; /* Pour s'assurer que la navbar reste au-dessus des autres éléments */
+}
+
+@media (min-width: 768px) {
+  /* Navbar en haut pour les grands écrans */
+  .navbar {
+    top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Navbar en bas pour les petits écrans */
+  .navbar {
+    bottom: 0;
+  }
+}
