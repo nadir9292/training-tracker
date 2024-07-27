@@ -1,0 +1,33 @@
+{
+  "name": "training-tracker",
+  "description": "Next.js app.",
+  "version": "0.0.0",
+  "author": {
+    "name": "Nadir MANSOURI",
+    "email": "nadirbtssio@gmail.com",
+    "url": "https://github.com/nadir9292"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/typography": "^0.5.2",
+    "eslint-config-next": "^13.1.1",
+    "next": "^13.1.1",
+    "next-pwa": "^5.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "workbox-window": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.17.4",
+    "@types/react": "^17.0.2",
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.24",
+    "typescript": "^4.3.4"
+  }
+}
