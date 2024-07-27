@@ -1,3 +1,5 @@
+'use client'
+
 import NavBar from '@/components/NavBar'
 import getConfig from 'next/config'
 import Head from 'next/head'

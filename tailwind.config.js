@@ -1,4 +1,6 @@
-module.exports = {
+const withMT = require('@material-tailwind/react/utils/withMT')
+
+module.exports = withMT({
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -40,6 +42,9 @@ module.exports = {
         highlightText: '#c4867a',
         mutedText: '#bb8c8c',
         offWhite: '#FAF9F6',
+        mt: {
+          50: '#FAF9F6',
+        },
       },
       fontSize: {
         sm: '0.8rem',
@@ -51,6 +56,8 @@ module.exports = {
         '5xl': '3rem',
         '6xl': '4rem',
         '7xl': '5rem',
+        '8xl': '6rem',
+        '9xl': '7rem',
         xxl: '8.052rem',
       },
       textShadow: {
@@ -62,4 +69,4 @@ module.exports = {
   },
   variants: {},
   plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
-}
+})
