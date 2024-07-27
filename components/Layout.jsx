@@ -5,32 +5,7 @@ import getConfig from 'next/config'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const { publicRuntimeConfig } = getConfig()
-
-type LayoutProps = {
-  title?: string
-  description?: string
-  date?: string
-  socialPreview?: string
-  children: React.ReactNode
-}
-
-const Layout = ({ children, ...customMeta }: LayoutProps) => {
-  const router = useRouter()
-  const { asPath } = router
-
-  const { name, url, title, description, socialPreview } =
-    publicRuntimeConfig.site || {}
-
-  const meta = {
-    name,
-    url,
-    title,
-    description,
-    socialPreview,
-    ...customMeta,
-  }
-
+const Layout = ({ children }) => {
   return (
     <>
       <Head>
@@ -46,7 +21,7 @@ const Layout = ({ children, ...customMeta }: LayoutProps) => {
           name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no"
         />
-        <title key="title">{meta.title}</title>
+        <title key="title">Training tracker</title>
       </Head>
       <main>
         <NavBar />

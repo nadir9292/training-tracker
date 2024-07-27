@@ -1,10 +1,5 @@
-import getConfig from 'next/config'
 import Layout from '@/components/Layout'
 import { useSpring, animated } from '@react-spring/web'
-
-const { publicRuntimeConfig } = getConfig() || {}
-const { site } = publicRuntimeConfig || {}
-const { name } = site || {}
 
 const Home = () => {
   const propsFirst = useSpring(propsOne)

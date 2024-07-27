@@ -2,13 +2,6 @@ import {
   Navbar,
   Collapse,
   Typography,
-  IconButton,
-  Popover,
-  PopoverHandler,
-  Button,
-  PopoverContent,
-  Input,
-  Avatar,
   CardBody,
   Card,
 } from '@material-tailwind/react'
@@ -94,10 +87,17 @@ const NavBar = () => {
           <div className="hidden lg:block">
             <NavList />
           </div>
-          <Bars3Icon
-            className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
-            onClick={() => setOpenNav(!openNav)}
-          />
+          {openNav ? (
+            <Bars3Icon
+              className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
+              onClick={() => setOpenNav(!openNav)}
+            />
+          ) : (
+            <XMarkIcon
+              className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
+              onClick={() => setOpenNav(!openNav)}
+            />
+          )}
         </div>
         <Collapse open={openNav} className="rounded-xl">
           <Card className="my-4 mx-auto w-8/12">
