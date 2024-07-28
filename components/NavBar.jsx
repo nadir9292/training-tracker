@@ -5,6 +5,9 @@ import {
   CardBody,
   Card,
   Button,
+  Popover,
+  PopoverHandler,
+  PopoverContent,
 } from '@material-tailwind/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
@@ -12,12 +15,8 @@ import Link from 'next/link'
 
 const NavList = () => {
   return (
-    <ul className="my-6 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography
-        as="li"
-        variant="small"
-        className="p-1 font-bold text-offWhite"
-      >
+    <ul className="my-6 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 bg-offWhite">
+      <Typography as="li" variant="small" className="py-4 font-bold text-black">
         <Link
           href="/my-profile"
           className="flex items-center hover:text-blue-500 transition-colors"
@@ -25,11 +24,7 @@ const NavList = () => {
           My profile
         </Link>
       </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        className="p-1 font-bold text-offWhite"
-      >
+      <Typography as="li" variant="small" className="py-4 font-bold text-black">
         <Link
           href="/"
           className="flex items-center hover:text-blue-500 transition-colors"
@@ -37,11 +32,7 @@ const NavList = () => {
           New training
         </Link>
       </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        className="p-1 font-bold text-offWhite"
-      >
+      <Typography as="li" variant="small" className="py-4 font-bold text-black">
         <Link
           href="/"
           className="flex items-center hover:text-blue-500 transition-colors"
@@ -118,12 +109,8 @@ const NavBar = () => {
           </Collapse>
         </Navbar>
       ) : (
-        <Navbar
-          className="mx-auto max-w-screen-xl px-6 py-3 navbar rounded bg-transparent border-none"
-          blurred={true}
-          shadow={false}
-        >
-          <div className="flex items-center justify-between text-blue-gray-900">
+        <Navbar className="mx-auto max-w-screen-xl px-6 py-3 navbar rounded-none bg-transparent border-0">
+          <div className="flex items-center justify-between">
             <div className="flex justify-between">
               <Button
                 variant="outlined"
@@ -153,28 +140,24 @@ const NavBar = () => {
                 </Typography>
               </Button>
             </div>
-            {!openNav ? (
-              <Bars3Icon
-                className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
-                onClick={() => setOpenNav(!openNav)}
-              />
-            ) : (
-              <XMarkIcon
-                className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
-                onClick={() => setOpenNav(!openNav)}
-              />
-            )}
+            <Popover
+              animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0, y: 25 },
+              }}
+              placement="top-start"
+            >
+              <PopoverHandler>
+                <Bars3Icon
+                  className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
+                  onClick={() => setOpenNav(!openNav)}
+                />
+              </PopoverHandler>
+              <PopoverContent className="z-50 max-w-[26rem] mt-4">
+                <NavList />
+              </PopoverContent>
+            </Popover>
           </div>
-          <Collapse open={openNav} className="rounded-xl">
-            <Card className="my-4 mx-auto w-8/12">
-              <CardBody>
-                <Typography>
-                  Use our Tailwind CSS collapse for your website. You can use if
-                  for accordion, collapsible items and much more.
-                </Typography>
-              </CardBody>
-            </Card>
-          </Collapse>
         </Navbar>
       )}
     </div>
