@@ -17,6 +17,7 @@ import {
   ChevronDoubleUpIcon,
   UserPlusIcon,
   UserCircleIcon,
+  HomeIcon,
 } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -54,65 +55,77 @@ const NavBar = () => {
               variant="h4"
               className="mr-4 cursor-pointer md:hidden py-1.5 hover:scale-110 text-offWhite font-anton"
             >
-              TRAINING{' '}
+              TRAINING
               <span className="italic text-sm font-orbitron underline">
                 tracker
               </span>
             </Typography>
           </div>
           <div className="flex justify-center border-2 rounded-xl ml-4">
-            <Button
-              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
-              variant="text"
-            >
-              <span>
-                <PlusIcon className="h-6 w-6 mr-2" />
-              </span>
-              training
-            </Button>
-            <Button
-              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
-              variant="text"
-            >
-              <span>
-                <ClipboardIcon className="h-6 w-6 mr-2" />
-              </span>
-              VIEW TRAINING
-            </Button>
-            <Button
-              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
-              variant="text"
-            >
-              <span>
-                <ChartBarSquareIcon className="h-6 w-6 mr-2" />
-              </span>
-              STATS
-            </Button>
+            <Link href="/add-training">
+              <Button
+                className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+                variant="text"
+              >
+                <span>
+                  <PlusIcon className="h-6 w-6 mr-2" />
+                </span>
+                training
+              </Button>
+            </Link>
+            <Link href="/view-traning">
+              <Button
+                className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+                variant="text"
+              >
+                <span>
+                  <ClipboardIcon className="h-6 w-6 mr-2" />
+                </span>
+                VIEW TRAINING
+              </Button>
+            </Link>
+            <Link href="/view-stats">
+              <Button
+                className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+                variant="text"
+              >
+                <span>
+                  <ChartBarSquareIcon className="h-6 w-6 mr-2" />
+                </span>
+                STATS
+              </Button>
+            </Link>
           </div>
           <div className="flex justify-center border-2 rounded-xl ml-4">
-            <Button
-              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
-              variant="text"
-            >
-              LOGIN
-            </Button>
-            <Button
-              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
-              variant="text"
-            >
-              REGISTER
-            </Button>
+            <Link href="/login">
+              <Button
+                className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+                variant="text"
+              >
+                LOGIN
+              </Button>
+            </Link>
+            <Link href="/register">
+              <Button
+                className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+                variant="text"
+              >
+                REGISTER
+              </Button>
+            </Link>
           </div>
           <div className="flex justify-center border-2 rounded-xl ml-4">
-            <Button
-              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
-              variant="text"
-            >
-              <span>
-                <AdjustmentsHorizontalIcon className="h-6 w-6 mr-2" />
-              </span>
-              SETTINGS
-            </Button>
+            <Link href="/settings">
+              <Button
+                className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+                variant="text"
+              >
+                <span>
+                  <AdjustmentsHorizontalIcon className="h-6 w-6 mr-2" />
+                </span>
+                SETTINGS
+              </Button>
+            </Link>
           </div>
         </Navbar>
       ) : (
@@ -190,10 +203,23 @@ export const NavList = () => {
       <Typography
         as="li"
         variant="paragraph"
+        className="py-2 font-bold text-center text-black"
+      >
+        <Link href="/" className="flex items-center">
+          <span>
+            <HomeIcon className="h-6 w-6 mr-3" />
+          </span>
+          HOME
+        </Link>
+      </Typography>
+      <hr />
+      <Typography
+        as="li"
+        variant="paragraph"
         className="py-2 font-bold text-black text-center"
       >
         <Link
-          href="/"
+          href="/settings"
           className="flex items-center hover:text-blue-500 transition-colors"
         >
           <span>

@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <Layout>
       <div>
-        <section className="py-4 w-80 md:w-192 mx-auto my-12 ">
+        <section className="py-4 w-80 md:w-192 mx-auto mt-4 md:mt-24">
           <animated.div style={propsFirst}>
             <h1 className="text-center font-anton text-offWhite text-8xl md:text-xxl font-bold -mb-12 md:-mb-16">
               TRAINING
