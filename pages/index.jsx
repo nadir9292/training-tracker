@@ -10,12 +10,12 @@ const Home = () => {
       <div>
         <section className="py-4 w-80 md:w-192 mx-auto my-8 ">
           <animated.div style={propsFirst}>
-            <h1 className="text-center font-anton text-offWhite text-8xl md:text-xxl font-bold -mb-12 md:-mb-16 text-shadow-lg shadow-gray-900/50">
+            <h1 className="text-center font-anton text-offWhite text-8xl md:text-xxl font-bold -mb-12 md:-mb-16">
               TRAINING
             </h1>
           </animated.div>
           <animated.div style={propsSecond}>
-            <h1 className="text-center font-orbitron underline text-offWhite text-5xl md:text-6xl italic font-bold text-shadow-lg shadow-gray-900/50">
+            <h1 className="text-center font-orbitron underline text-offWhite text-5xl md:text-6xl italic font-bold">
               TRACKER
             </h1>
           </animated.div>

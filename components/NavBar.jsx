@@ -9,6 +9,7 @@ import {
   PopoverContent,
   Avatar,
   IconButton,
+  Button,
 } from '@material-tailwind/react'
 import {
   Bars3Icon,
@@ -17,6 +18,8 @@ import {
   AdjustmentsHorizontalIcon,
   ChartBarSquareIcon,
   PlusCircleIcon,
+  ClipboardIcon,
+  ChevronDoubleUpIcon,
 } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -61,18 +64,19 @@ const NavBar = () => {
   const [openNav, setOpenNav] = useState(false)
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
+  const [jwt, setJwt] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     const handleWindowResize = () => setWindowWidth(window.innerWidth)
 
-    handleWindowResize() // Set initial width
+    handleWindowResize()
     window.addEventListener('resize', handleWindowResize)
     return () => window.removeEventListener('resize', handleWindowResize)
   }, [])
 
   if (!mounted) {
-    return null // Render nothing while mounting
+    return null
   }
 
   return (
@@ -95,31 +99,7 @@ const NavBar = () => {
                 tracker
               </span>
             </Typography>
-            <div className="hidden lg:block">
-              <NavList />
-            </div>
-            {!openNav ? (
-              <Bars3Icon
-                className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
-                onClick={() => setOpenNav(!openNav)}
-              />
-            ) : (
-              <XMarkIcon
-                className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
-                onClick={() => setOpenNav(!openNav)}
-              />
-            )}
           </div>
-          <Collapse open={openNav} className="rounded-xl">
-            <Card className="my-4 mx-auto w-8/12">
-              <CardBody>
-                <Typography>
-                  Use our Tailwind CSS collapse for your website. You can use if
-                  for accordion, collapsible items and much more.
-                </Typography>
-              </CardBody>
-            </Card>
-          </Collapse>
         </Navbar>
       ) : (
         <Navbar className="mx-auto max-w-screen-xl px-6 py-3 navbar rounded-none bg-transparent border-0">
@@ -139,7 +119,7 @@ const NavBar = () => {
                 placement="top"
               >
                 <PopoverHandler>
-                  <Bars3Icon
+                  <ChevronDoubleUpIcon
                     className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110 rounded-lg"
                     onClick={() => setOpenNav(!openNav)}
                   />
@@ -148,17 +128,33 @@ const NavBar = () => {
                   <NavList />
                 </PopoverContent>
               </Popover>
-              <Link href="/my-profile" className="flex items-center mx-4">
-                <Typography className="font-bold text-offWhite mx-2 uppercase w-12">
-                  Nadir
-                </Typography>
-
-                <Avatar
-                  src="https://docs.material-tailwind.com/img/face-2.jpg"
-                  alt="avatar"
-                  className="border h-10 w-10 shadow-2xl"
-                />
-              </Link>
+              {!jwt ? (
+                <>
+                  <Link href="/login">
+                    <Typography className="bg-offWhite font-montserrat font-bold uppercase text-xs">
+                      login
+                    </Typography>
+                  </Link>
+                  <Link href="/register">
+                    <Typography className="bg-offWhite font-montserrat font-bold uppercase text-xs">
+                      register
+                    </Typography>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <IconButton className="bg-transparent shadow-none">
+                    <ClipboardIcon className="h-10 w-10" />
+                  </IconButton>
+                  <Link href="/my-profile" className="flex items-center ">
+                    <Avatar
+                      src="https://docs.material-tailwind.com/img/face-2.jpg"
+                      alt="avatar"
+                      className="border h-10 w-10 shadow-2xl"
+                    />
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </Navbar>
