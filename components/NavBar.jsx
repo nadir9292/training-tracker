@@ -4,13 +4,20 @@ import {
   Typography,
   CardBody,
   Card,
-  Button,
   Popover,
   PopoverHandler,
   PopoverContent,
   Avatar,
+  IconButton,
 } from '@material-tailwind/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ArrowLeftOnRectangleIcon,
+  AdjustmentsHorizontalIcon,
+  ChartBarSquareIcon,
+  PlusCircleIcon,
+} from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
@@ -26,6 +33,9 @@ const NavList = () => {
           href="/"
           className="flex items-center hover:text-blue-500 transition-colors"
         >
+          <span>
+            <AdjustmentsHorizontalIcon className="h-6 w-6 mr-3" />
+          </span>
           SETTINGS
         </Link>
       </Typography>
@@ -37,6 +47,9 @@ const NavList = () => {
         className="py-2 font-bold text-center"
       >
         <Link href="/" className="flex items-center">
+          <span>
+            <ArrowLeftOnRectangleIcon className="h-6 w-6 mr-3" />
+          </span>
           LOG OUT
         </Link>
       </Typography>
@@ -111,29 +124,17 @@ const NavBar = () => {
       ) : (
         <Navbar className="mx-auto max-w-screen-xl px-6 py-3 navbar rounded-none bg-transparent border-0">
           <div className="flex items-center justify-between">
-            <div className="flex justify-between items-center">
-              <Button
-                variant="text"
-                size="sm"
-                className="bg-transparent border-offWhite"
-              >
-                <Typography className="font-bold text-offWhite">
-                  toto
-                </Typography>
-              </Button>
-              <Button
-                variant="text"
-                size="sm"
-                className="bg-transparent border-offWhite"
-              >
-                <Typography className="font-bold text-offWhite">
-                  toto
-                </Typography>
-              </Button>
+            <div className="flex justify-between w-full items-center">
+              <IconButton className="bg-transparent shadow-none">
+                <PlusCircleIcon className="h-10 w-10" />
+              </IconButton>
+              <IconButton className="bg-transparent shadow-none">
+                <ChartBarSquareIcon className="h-10 w-10" />
+              </IconButton>
               <Popover
                 animate={{
-                  mount: { scale: 1, y: 0 },
-                  unmount: { scale: 0, y: 25 },
+                  mount: { scale: 1, y: -10 },
+                  unmount: { scale: 0, y: 100 },
                 }}
                 placement="top"
               >
@@ -143,7 +144,7 @@ const NavBar = () => {
                     onClick={() => setOpenNav(!openNav)}
                   />
                 </PopoverHandler>
-                <PopoverContent>
+                <PopoverContent className="">
                   <NavList />
                 </PopoverContent>
               </Popover>
@@ -155,7 +156,7 @@ const NavBar = () => {
                 <Avatar
                   src="https://docs.material-tailwind.com/img/face-2.jpg"
                   alt="avatar"
-                  className="border"
+                  className="border h-10 w-10 shadow-2xl"
                 />
               </Link>
             </div>
