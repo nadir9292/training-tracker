@@ -8,6 +8,7 @@ import {
   Popover,
   PopoverHandler,
   PopoverContent,
+  Avatar,
 } from '@material-tailwind/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
@@ -16,28 +17,27 @@ import Link from 'next/link'
 const NavList = () => {
   return (
     <ul className="my-6 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 bg-offWhite">
-      <Typography as="li" variant="small" className="py-4 font-bold text-black">
-        <Link
-          href="/my-profile"
-          className="flex items-center hover:text-blue-500 transition-colors"
-        >
-          My profile
-        </Link>
-      </Typography>
-      <Typography as="li" variant="small" className="py-4 font-bold text-black">
+      <Typography
+        as="li"
+        variant="paragraph"
+        className="py-2 font-bold text-black text-center"
+      >
         <Link
           href="/"
           className="flex items-center hover:text-blue-500 transition-colors"
         >
-          New training
+          SETTINGS
         </Link>
       </Typography>
-      <Typography as="li" variant="small" className="py-4 font-bold text-black">
-        <Link
-          href="/"
-          className="flex items-center hover:text-blue-500 transition-colors"
-        >
-          test
+      <hr />
+      <Typography
+        as="li"
+        variant="paragraph"
+        color="red"
+        className="py-2 font-bold text-center"
+      >
+        <Link href="/" className="flex items-center">
+          LOG OUT
         </Link>
       </Typography>
     </ul>
@@ -111,52 +111,54 @@ const NavBar = () => {
       ) : (
         <Navbar className="mx-auto max-w-screen-xl px-6 py-3 navbar rounded-none bg-transparent border-0">
           <div className="flex items-center justify-between">
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               <Button
-                variant="outlined"
+                variant="text"
                 size="sm"
-                className="bg-transparent border-offWhite mx-2"
+                className="bg-transparent border-offWhite"
               >
                 <Typography className="font-bold text-offWhite">
                   toto
                 </Typography>
               </Button>
               <Button
-                variant="outlined"
+                variant="text"
                 size="sm"
-                className="bg-transparent border-offWhite mx-2"
+                className="bg-transparent border-offWhite"
               >
                 <Typography className="font-bold text-offWhite">
                   toto
                 </Typography>
               </Button>
-              <Button
-                variant="outlined"
-                size="sm"
-                className="bg-transparent border-offWhite mx-2"
+              <Popover
+                animate={{
+                  mount: { scale: 1, y: 0 },
+                  unmount: { scale: 0, y: 25 },
+                }}
+                placement="top"
               >
-                <Typography className="font-bold text-offWhite">
-                  toto
+                <PopoverHandler>
+                  <Bars3Icon
+                    className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110 rounded-lg"
+                    onClick={() => setOpenNav(!openNav)}
+                  />
+                </PopoverHandler>
+                <PopoverContent>
+                  <NavList />
+                </PopoverContent>
+              </Popover>
+              <Link href="/my-profile" className="flex items-center mx-4">
+                <Typography className="font-bold text-offWhite mx-2 uppercase w-12">
+                  Nadir
                 </Typography>
-              </Button>
-            </div>
-            <Popover
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0, y: 25 },
-              }}
-              placement="top-start"
-            >
-              <PopoverHandler>
-                <Bars3Icon
-                  className="w-10 h-10 text-offWhite cursor-pointer hover:scale-110"
-                  onClick={() => setOpenNav(!openNav)}
+
+                <Avatar
+                  src="https://docs.material-tailwind.com/img/face-2.jpg"
+                  alt="avatar"
+                  className="border"
                 />
-              </PopoverHandler>
-              <PopoverContent className="z-50 max-w-[26rem] mt-4">
-                <NavList />
-              </PopoverContent>
-            </Popover>
+              </Link>
+            </div>
           </div>
         </Navbar>
       )}

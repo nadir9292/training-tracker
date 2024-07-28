@@ -33,6 +33,7 @@ body {
 
 .navbar {
   position: fixed;
+  height: 70px;
   width: 100%;
   z-index: 100; /* Pour s'assurer que la navbar reste au-dessus des autres éléments */
 }
@@ -48,5 +49,6 @@ body {
   /* Navbar en bas pour les petits écrans */
   .navbar {
     bottom: 0;
+    margin-bottom: 5px;
   }
 }
