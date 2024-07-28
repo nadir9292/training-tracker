@@ -53,24 +53,24 @@ const Home = () => {
           </animated.div>
 
           <animated.div style={propsFourth}>
-              <div className="mx-aut backdrop-blur-lg border-2 px-4 py-6 rounded-lg">
-                <h1 className="text-offWhite text-md md:text-3xl font-bold">
-                  Unlock Your Full Potential with TRAINING Tracker
-                </h1>
-                <h1 className="text-offWhite text-sm md:text-2xl text-left pb-2 text-pretty font-montserrat">
-                  Welcome to the ultimate destination for fitness enthusiasts
-                  and bodybuilders! Our intuitive platform empowers you to
-                  seamlessly log your workouts, track your progress, and analyze
-                  your performance. With personalized insights and detailed
-                  statistics, you can maximize your gains and achieve your
-                  fitness goals faster.
-                </h1>
-                <Link href="/register">
-                  <Button className="flex items-center w-full justify-center bg-transparent shadow-2xl border-2 ">
-                    try now
-                  </Button>
-                </Link>
-              </div>
+            <div className="mx-aut backdrop-blur-lg border-2 px-4 py-6 rounded-lg">
+              <h1 className="text-offWhite text-md md:text-3xl font-bold">
+                Unlock Your Full Potential with TRAINING Tracker
+              </h1>
+              <h1 className="text-offWhite text-sm md:text-2xl text-left pb-2 text-pretty font-montserrat">
+                Welcome to the ultimate destination for fitness enthusiasts and
+                bodybuilders! Our intuitive platform empowers you to seamlessly
+                log your workouts, track your progress, and analyze your
+                performance. With personalized insights and detailed statistics,
+                you can maximize your gains and achieve your fitness goals
+                faster.
+              </h1>
+              <Link href="/register">
+                <Button className="flex items-center w-full justify-center bg-transparent shadow-2xl border-2 ">
+                  try now
+                </Button>
+              </Link>
+            </div>
           </animated.div>
         </section>
       </div>
