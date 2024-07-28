@@ -4,6 +4,7 @@ import { useSpring, animated } from '@react-spring/web'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import Tilt from 'react-parallax-tilt'
 
 const Home = () => {
   const propsFirst = useSpring(propsOne)
@@ -12,6 +13,7 @@ const Home = () => {
   const propsFourth = useSpring(propsFour)
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
+  const [scale, setScale] = useState(1)
 
   useEffect(() => {
     setMounted(true)
@@ -48,24 +50,31 @@ const Home = () => {
               width={windowWidth >= 960 ? 150 : 100}
               height={windowWidth >= 960 ? 150 : 100}
               alt="poids icons"
-              style={{ width: 'auto', height: 'auto' }} // optional
+              style={{ width: 'auto', height: 'auto' }}
             />
           </animated.div>
-          <animated.div style={propsFourth}>
-            <div className="mx-aut backdrop-blur-lg border-2 px-4 py-6 rounded-lg">
-              <h1 className="text-offWhite text-sm md:text-3xl text-left pb-2 text-pretty font-montserrat">
-                Discover &lsquo;Job&apos;in Quiz&lsquo; – streamline your hiring
-                with customizable quizzes. Create an account, generate quiz
-                links, and get instant candidate results. Simplify recruitment
-                now!
-              </h1>
-              <Link href="/register">
-                <Button className="flex items-center w-full justify-center bg-transparent shadow-2xl border-2 ">
-                  try now
-                </Button>
-              </Link>
-            </div>
-          </animated.div>
+          <Tilt scale={scale} transitionSpeed={2500}>
+            <animated.div style={propsFourth}>
+              <div className="mx-aut backdrop-blur-lg border-2 px-4 py-6 rounded-lg">
+                <h1 className="text-offWhite text-md md:text-3xl font-bold">
+                  Unlock Your Full Potential with TRAINING Tracker
+                </h1>
+                <h1 className="text-offWhite text-sm md:text-2xl text-left pb-2 text-pretty font-montserrat">
+                  Welcome to the ultimate destination for fitness enthusiasts
+                  and bodybuilders! Our intuitive platform empowers you to
+                  seamlessly log your workouts, track your progress, and analyze
+                  your performance. With personalized insights and detailed
+                  statistics, you can maximize your gains and achieve your
+                  fitness goals faster.
+                </h1>
+                <Link href="/register">
+                  <Button className="flex items-center w-full justify-center bg-transparent shadow-2xl border-2 ">
+                    try now
+                  </Button>
+                </Link>
+              </div>
+            </animated.div>
+          </Tilt>
         </section>
       </div>
     </Layout>
