@@ -15,6 +15,8 @@ import {
   PlusIcon,
   ClipboardIcon,
   ChevronDoubleUpIcon,
+  UserPlusIcon,
+  UserCircleIcon,
 } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -141,14 +143,18 @@ const NavBar = () => {
               {!jwt ? (
                 <>
                   <Link href="/login">
-                    <Typography className="bg-offWhite font-montserrat font-bold uppercase text-xs">
-                      login
-                    </Typography>
+                    <IconButton className="bg-transparent shadow-none">
+                      <UserCircleIcon className="h-6 w-6 mx-auto" />
+                      <span className="font-montserrat text-xs text-center">
+                        LOGIN
+                      </span>
+                    </IconButton>
                   </Link>
                   <Link href="/register">
-                    <Typography className="bg-offWhite font-montserrat font-bold uppercase text-xs">
-                      register
-                    </Typography>
+                    <IconButton className="bg-transparent shadow-none">
+                      <UserPlusIcon className="h-6 w-6 mx-auto" />
+                      <span className="font-montserrat text-xs">REGISTER</span>
+                    </IconButton>
                   </Link>
                 </>
               ) : (
