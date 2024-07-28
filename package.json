@@ -8,7 +8,7 @@
     "url": "https://github.com/nadir9292"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "format": "prettier --write ."

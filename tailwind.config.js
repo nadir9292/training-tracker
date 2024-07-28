@@ -14,7 +14,9 @@ module.exports = withMT({
     extend: {
       spacing: {
         128: '32rem',
+        150: '40rem',
         192: '48rem',
+        200: '56rem',
       },
       fontFamily: {
         montserrat: ['Montserrat'],

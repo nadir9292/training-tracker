@@ -1,10 +1,30 @@
 import Layout from '@/components/Layout'
+import { Button } from '@material-tailwind/react'
 import { useSpring, animated } from '@react-spring/web'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 const Home = () => {
   const propsFirst = useSpring(propsOne)
   const propsSecond = useSpring(propsTwo)
+  const propsTree = useSpring(propsWeight)
+  const propsFourth = useSpring(propsFour)
+  const [windowWidth, setWindowWidth] = useState(0)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    const handleWindowResize = () => setWindowWidth(window.innerWidth)
+
+    handleWindowResize()
+    window.addEventListener('resize', handleWindowResize)
+    return () => window.removeEventListener('resize', handleWindowResize)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <Layout>
@@ -20,32 +40,31 @@ const Home = () => {
               TRACKER
             </h1>
           </animated.div>
-          <div className="flex items-center gap-2 my-4">
+          <animated.div style={propsTree}>
             <Image
+              className="mx-auto mt-12"
               src="/poids.png"
               priority={true}
-              width={100}
-              height={100}
+              width={windowWidth >= 960 ? 150 : 100}
+              height={windowWidth >= 960 ? 150 : 100}
               alt="poids icons"
               style={{ width: 'auto', height: 'auto' }} // optional
             />
-            <Image
-              src="/poids.png"
-              priority={true}
-              width={100}
-              height={100}
-              alt="poids icons"
-              style={{ width: 'auto', height: 'auto' }} // optional
-            />
-            <Image
-              src="/poids.png"
-              priority={true}
-              width={100}
-              height={100}
-              alt="poids icons"
-              style={{ width: 'auto', height: 'auto' }} // optional
-            />
-          </div>
+          </animated.div>
+          <animated.div style={propsFourth}>
+            <div className="mx-aut backdrop-blur-lg border-2 px-4 py-6 rounded-lg">
+              <h1 className="text-offWhite text-sm md:text-3xl text-left pb-2 text-pretty font-montserrat">
+                Discover "Job'in Quiz" – streamline your hiring with
+                customizable quizzes. Create an account, generate quiz links,
+                and get instant candidate results. Simplify recruitment now!
+              </h1>
+              <Link href="/register">
+                <Button className="flex items-center w-full justify-center bg-transparent shadow-2xl border-2 ">
+                  try now
+                </Button>
+              </Link>
+            </div>
+          </animated.div>
         </section>
       </div>
     </Layout>
@@ -70,5 +89,25 @@ export const propsTwo = {
     mass: 10.5,
     tension: 280,
     friction: 60,
+  },
+}
+export const propsWeight = {
+  from: { opacity: 0, y: -100 },
+  to: { opacity: 1, y: 0 },
+  delay: 1000,
+  config: {
+    mass: 5.3,
+    tension: 180,
+    friction: 25,
+  },
+}
+export const propsFour = {
+  from: { opacity: 0.5, y: -100 },
+  to: { opacity: 1, y: 0 },
+  delay: 1000,
+  config: {
+    mass: 5.3,
+    tension: 180,
+    friction: 25,
   },
 }
