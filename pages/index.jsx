@@ -4,7 +4,6 @@ import { useSpring, animated } from '@react-spring/web'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import Tilt from 'react-parallax-tilt'
 
 const Home = () => {
   const propsFirst = useSpring(propsOne)
@@ -13,7 +12,6 @@ const Home = () => {
   const propsFourth = useSpring(propsFour)
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
-  const [scale, setScale] = useState(1)
 
   useEffect(() => {
     setMounted(true)
@@ -53,8 +51,8 @@ const Home = () => {
               style={{ width: 'auto', height: 'auto' }}
             />
           </animated.div>
-          <Tilt scale={scale} transitionSpeed={2500}>
-            <animated.div style={propsFourth}>
+
+          <animated.div style={propsFourth}>
               <div className="mx-aut backdrop-blur-lg border-2 px-4 py-6 rounded-lg">
                 <h1 className="text-offWhite text-md md:text-3xl font-bold">
                   Unlock Your Full Potential with TRAINING Tracker
@@ -73,8 +71,7 @@ const Home = () => {
                   </Button>
                 </Link>
               </div>
-            </animated.div>
-          </Tilt>
+          </animated.div>
         </section>
       </div>
     </Layout>
