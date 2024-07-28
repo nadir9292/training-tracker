@@ -19,42 +19,6 @@ import {
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-const NavList = () => {
-  return (
-    <ul className="my-6 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 bg-offWhite">
-      <Typography
-        as="li"
-        variant="paragraph"
-        className="py-2 font-bold text-black text-center"
-      >
-        <Link
-          href="/"
-          className="flex items-center hover:text-blue-500 transition-colors"
-        >
-          <span>
-            <AdjustmentsHorizontalIcon className="h-6 w-6 mr-3" />
-          </span>
-          SETTINGS
-        </Link>
-      </Typography>
-      <hr />
-      <Typography
-        as="li"
-        variant="paragraph"
-        color="red"
-        className="py-2 font-bold text-center"
-      >
-        <Link href="/" className="flex items-center">
-          <span>
-            <ArrowLeftOnRectangleIcon className="h-6 w-6 mr-3" />
-          </span>
-          LOG OUT
-        </Link>
-      </Typography>
-    </ul>
-  )
-}
-
 const NavBar = () => {
   const [openNav, setOpenNav] = useState(false)
   const [windowWidth, setWindowWidth] = useState(0)
@@ -206,6 +170,42 @@ const NavBar = () => {
         </Navbar>
       )}
     </div>
+  )
+}
+
+export const NavList = () => {
+  return (
+    <ul className="my-6 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 bg-offWhite">
+      <Typography
+        as="li"
+        variant="paragraph"
+        className="py-2 font-bold text-black text-center"
+      >
+        <Link
+          href="/"
+          className="flex items-center hover:text-blue-500 transition-colors"
+        >
+          <span>
+            <AdjustmentsHorizontalIcon className="h-6 w-6 mr-3" />
+          </span>
+          SETTINGS
+        </Link>
+      </Typography>
+      <hr />
+      <Typography
+        as="li"
+        variant="paragraph"
+        color="red"
+        className="py-2 font-bold text-center"
+      >
+        <Link href="/" className="flex items-center">
+          <span>
+            <ArrowLeftOnRectangleIcon className="h-6 w-6 mr-3" />
+          </span>
+          LOG OUT
+        </Link>
+      </Typography>
+    </ul>
   )
 }
 

@@ -54,9 +54,10 @@ const Home = () => {
           <animated.div style={propsFourth}>
             <div className="mx-aut backdrop-blur-lg border-2 px-4 py-6 rounded-lg">
               <h1 className="text-offWhite text-sm md:text-3xl text-left pb-2 text-pretty font-montserrat">
-                Discover "Job'in Quiz" – streamline your hiring with
-                customizable quizzes. Create an account, generate quiz links,
-                and get instant candidate results. Simplify recruitment now!
+                Discover &lsquo;Job&apos;in Quiz&lsquo; – streamline your hiring
+                with customizable quizzes. Create an account, generate quiz
+                links, and get instant candidate results. Simplify recruitment
+                now!
               </h1>
               <Link href="/register">
                 <Button className="flex items-center w-full justify-center bg-transparent shadow-2xl border-2 ">
