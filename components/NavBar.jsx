@@ -102,6 +102,8 @@ const NavBar = () => {
             >
               REGISTER
             </Button>
+          </div>
+          <div className="flex justify-center border-2 rounded-xl ml-4">
             <Button
               className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
               variant="text"
@@ -118,10 +120,12 @@ const NavBar = () => {
           <div className="flex items-center justify-between">
             <div className="flex justify-between w-full items-center">
               <IconButton className="bg-transparent shadow-none">
-                <PlusIcon className="h-10 w-10" />
+                <PlusIcon className="h-6 w-6 mx-auto" />
+                <span className="font-montserrat text-xs">NEW</span>
               </IconButton>
               <IconButton className="bg-transparent shadow-none">
-                <ChartBarSquareIcon className="h-10 w-10" />
+                <ChartBarSquareIcon className="h-6 w-6 mx-auto" />
+                <span className="font-montserrat text-xs">STATS</span>
               </IconButton>
               <Popover
                 animate={{
@@ -160,7 +164,8 @@ const NavBar = () => {
               ) : (
                 <>
                   <IconButton className="bg-transparent shadow-none">
-                    <ClipboardIcon className="h-10 w-10" />
+                    <ClipboardIcon className="h-6 w-6 mx-auto" />
+                    <span className="font-montserrat text-xs">TRAINING</span>
                   </IconButton>
                   <Link href="/my-profile" className="flex items-center ">
                     <Avatar
