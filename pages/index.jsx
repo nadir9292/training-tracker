@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout'
 import { useSpring, animated } from '@react-spring/web'
+import Image from 'next/image'
 
 const Home = () => {
   const propsFirst = useSpring(propsOne)
@@ -8,7 +9,7 @@ const Home = () => {
   return (
     <Layout>
       <div>
-        <section className="py-4 w-80 md:w-192 mx-auto my-8 ">
+        <section className="py-4 w-80 md:w-192 mx-auto my-12 ">
           <animated.div style={propsFirst}>
             <h1 className="text-center font-anton text-offWhite text-8xl md:text-xxl font-bold -mb-12 md:-mb-16">
               TRAINING
@@ -19,6 +20,32 @@ const Home = () => {
               TRACKER
             </h1>
           </animated.div>
+          <div className="flex items-center gap-2 my-4">
+            <Image
+              src="/poids.png"
+              priority={true}
+              width={100}
+              height={100}
+              alt="poids icons"
+              style={{ width: 'auto', height: 'auto' }} // optional
+            />
+            <Image
+              src="/poids.png"
+              priority={true}
+              width={100}
+              height={100}
+              alt="poids icons"
+              style={{ width: 'auto', height: 'auto' }} // optional
+            />
+            <Image
+              src="/poids.png"
+              priority={true}
+              width={100}
+              height={100}
+              alt="poids icons"
+              style={{ width: 'auto', height: 'auto' }} // optional
+            />
+          </div>
         </section>
       </div>
     </Layout>

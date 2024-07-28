@@ -1,9 +1,6 @@
 import {
   Navbar,
-  Collapse,
   Typography,
-  CardBody,
-  Card,
   Popover,
   PopoverHandler,
   PopoverContent,
@@ -12,12 +9,10 @@ import {
   Button,
 } from '@material-tailwind/react'
 import {
-  Bars3Icon,
-  XMarkIcon,
   ArrowLeftOnRectangleIcon,
   AdjustmentsHorizontalIcon,
   ChartBarSquareIcon,
-  PlusCircleIcon,
+  PlusIcon,
   ClipboardIcon,
   ChevronDoubleUpIcon,
 } from '@heroicons/react/24/outline'
@@ -83,8 +78,7 @@ const NavBar = () => {
     <div>
       {windowWidth >= 960 ? (
         <Navbar
-          className="mx-auto max-w-screen-xl px-6 py-3 bg-transparent navbar"
-          blurred={false}
+          className="flex items-center justify-center rounded-none bg-transparent max-w-screen-xl px-6 py-3 border-0 navbar"
           shadow={false}
         >
           <div className="flex items-center justify-between text-blue-gray-900">
@@ -92,7 +86,7 @@ const NavBar = () => {
               as="a"
               href="/"
               variant="h4"
-              className="mr-4 cursor-pointer py-1.5 hover:scale-125 text-offWhite font-anton"
+              className="mr-4 cursor-pointer md:hidden py-1.5 hover:scale-110 text-offWhite font-anton"
             >
               TRAINING{' '}
               <span className="italic text-sm font-orbitron underline">
@@ -100,13 +94,65 @@ const NavBar = () => {
               </span>
             </Typography>
           </div>
+          <div className="flex justify-center border-2 rounded-xl ml-4">
+            <Button
+              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+              variant="text"
+            >
+              <span>
+                <PlusIcon className="h-6 w-6 mr-2" />
+              </span>
+              training
+            </Button>
+            <Button
+              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+              variant="text"
+            >
+              <span>
+                <ClipboardIcon className="h-6 w-6 mr-2" />
+              </span>
+              VIEW TRAINING
+            </Button>
+            <Button
+              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+              variant="text"
+            >
+              <span>
+                <ChartBarSquareIcon className="h-6 w-6 mr-2" />
+              </span>
+              STATS
+            </Button>
+          </div>
+          <div className="flex justify-center border-2 rounded-xl ml-4">
+            <Button
+              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+              variant="text"
+            >
+              LOGIN
+            </Button>
+            <Button
+              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+              variant="text"
+            >
+              REGISTER
+            </Button>
+            <Button
+              className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
+              variant="text"
+            >
+              <span>
+                <AdjustmentsHorizontalIcon className="h-6 w-6 mr-2" />
+              </span>
+              SETTINGS
+            </Button>
+          </div>
         </Navbar>
       ) : (
         <Navbar className="mx-auto max-w-screen-xl px-6 py-3 navbar rounded-none bg-transparent border-0">
           <div className="flex items-center justify-between">
             <div className="flex justify-between w-full items-center">
               <IconButton className="bg-transparent shadow-none">
-                <PlusCircleIcon className="h-10 w-10" />
+                <PlusIcon className="h-10 w-10" />
               </IconButton>
               <IconButton className="bg-transparent shadow-none">
                 <ChartBarSquareIcon className="h-10 w-10" />
