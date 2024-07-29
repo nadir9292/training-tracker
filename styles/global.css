@@ -15,6 +15,26 @@ body {
   height: 100vh;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* styles.css */
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a0aec0;
+  border-radius: 5px;
+}
+
 /* Media query for small screens (phones, < 640px) */
 @media (max-width: 639px) {
   html,
@@ -38,6 +58,13 @@ body {
   z-index: 100; /* Pour s'assurer que la navbar reste au-dessus des autres éléments */
 }
 
+.snackbar {
+  position: fixed;
+  top: 120px;
+  width: 750px;
+  z-index: 100; /* Pour s'assurer que la navbar reste au-dessus des autres éléments */
+}
+
 @media (min-width: 768px) {
   /* Navbar en haut pour les grands écrans */
   .navbar {
@@ -50,5 +77,8 @@ body {
   .navbar {
     bottom: 0;
     margin-bottom: 1px;
+  }
+  .snackbar {
+    width: 350px;
   }
 }

@@ -73,7 +73,7 @@ const NavBar = () => {
                 training
               </Button>
             </Link>
-            <Link href="/view-traning">
+            <Link href="/view-training">
               <Button
                 className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110"
                 variant="text"
@@ -132,14 +132,18 @@ const NavBar = () => {
         <Navbar className="mx-auto max-w-screen-xl px-6 py-3 navbar rounded-none bg-transparent border-0">
           <div className="flex items-center justify-between">
             <div className="flex justify-between w-full items-center">
-              <IconButton className="bg-transparent shadow-none">
-                <PlusIcon className="h-6 w-6 mx-auto" />
-                <span className="font-montserrat text-xs">NEW</span>
-              </IconButton>
-              <IconButton className="bg-transparent shadow-none">
-                <ChartBarSquareIcon className="h-6 w-6 mx-auto" />
-                <span className="font-montserrat text-xs">STATS</span>
-              </IconButton>
+              <Link href="/add-training">
+                <IconButton className="bg-transparent shadow-none">
+                  <PlusIcon className="h-6 w-6 mx-auto" />
+                  <span className="font-montserrat text-xs">NEW</span>
+                </IconButton>
+              </Link>
+              <Link href="/view-stats">
+                <IconButton className="bg-transparent shadow-none">
+                  <ChartBarSquareIcon className="h-6 w-6 mx-auto" />
+                  <span className="font-montserrat text-xs">STATS</span>
+                </IconButton>
+              </Link>
               <Popover
                 animate={{
                   mount: { scale: 1, y: -10 },
@@ -157,7 +161,7 @@ const NavBar = () => {
                   <NavList />
                 </PopoverContent>
               </Popover>
-              {!jwt ? (
+              {jwt ? (
                 <>
                   <Link href="/login">
                     <IconButton className="bg-transparent shadow-none">
@@ -176,10 +180,12 @@ const NavBar = () => {
                 </>
               ) : (
                 <>
-                  <IconButton className="bg-transparent shadow-none">
-                    <ClipboardIcon className="h-6 w-6 mx-auto" />
-                    <span className="font-montserrat text-xs">TRAINING</span>
-                  </IconButton>
+                  <Link href="/view-training">
+                    <IconButton className="bg-transparent shadow-none">
+                      <ClipboardIcon className="h-6 w-6 mx-auto" />
+                      <span className="font-montserrat text-xs">TRAINING</span>
+                    </IconButton>
+                  </Link>
                   <Link href="/my-profile" className="flex items-center ">
                     <Avatar
                       src="https://docs.material-tailwind.com/img/face-2.jpg"
