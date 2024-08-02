@@ -53,11 +53,11 @@ const NavBar = () => {
               as="a"
               href="/"
               variant="h4"
-              className="mr-4 cursor-pointer md:hidden py-1.5 hover:scale-110 text-offWhite font-anton"
+              className="mr-4 cursor-pointer md:hidden py-1.5 hover:scale-110 text-lg text-offWhite font-BowlbyOne"
             >
               TRAINING
-              <span className="italic text-sm font-orbitron underline">
-                tracker
+              <span className="italic text-xs font-orbitron underline">
+                .tracker
               </span>
             </Typography>
           </div>
@@ -161,7 +161,7 @@ const NavBar = () => {
                   <NavList />
                 </PopoverContent>
               </Popover>
-              {jwt ? (
+              {!jwt ? (
                 <>
                   <Link href="/login">
                     <IconButton className="bg-transparent shadow-none">

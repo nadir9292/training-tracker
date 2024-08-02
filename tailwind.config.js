@@ -27,6 +27,7 @@ module.exports = withMT({
         anton: ['Anton'],
         roboto: ['Roboto Mono'],
         orbitron: ['Orbitron'],
+        BowlbyOne: ['Bowlby One'],
       },
       backgroundImage: {
         normal: "url('/bg-normal.png')",

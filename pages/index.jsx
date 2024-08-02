@@ -32,14 +32,14 @@ const Home = () => {
       <div>
         <section className="py-4 w-80 md:w-192 mx-auto mt-4 md:mt-24">
           <animated.div style={propsFirst}>
-            <h1 className="text-center font-anton text-offWhite text-8xl md:text-xxl font-bold -mb-12 md:-mb-16">
+            <h1 className="text-center font-BowlbyOne text-offWhite text-5xl md:text-8xl font-bold -mb-7 md:-mb-14">
               TRAINING
             </h1>
           </animated.div>
           <h1 className="text-center">
             <Typewriter
-              style="text-center uppercase font-orbitron underline text-offWhite text-5xl md:text-6xl italic font-bold"
-              text="tracker"
+              style="text-center uppercase font-orbitron underline text-offWhite text-4xl md:text-6xl font-bold"
+              text=".tracker"
               delay={100}
             />
           </h1>
