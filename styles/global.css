@@ -53,7 +53,7 @@ input:-webkit-autofill:active {
 
 .navbar {
   position: fixed;
-  height: 80px;
+  height: 75px;
   width: 100%;
   z-index: 100; /* Pour s'assurer que la navbar reste au-dessus des autres éléments */
 }

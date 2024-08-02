@@ -4,6 +4,7 @@ import { useSpring, animated } from '@react-spring/web'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import Typewriter from '@/components/Typewriter'
 
 const Home = () => {
   const propsFirst = useSpring(propsOne)
@@ -35,11 +36,13 @@ const Home = () => {
               TRAINING
             </h1>
           </animated.div>
-          <animated.div style={propsSecond}>
-            <h1 className="text-center font-orbitron underline text-offWhite text-5xl md:text-6xl italic font-bold">
-              TRACKER
-            </h1>
-          </animated.div>
+          <h1 className="text-center">
+            <Typewriter
+              style="text-center uppercase font-orbitron underline text-offWhite text-5xl md:text-6xl italic font-bold"
+              text="tracker"
+              delay={100}
+            />
+          </h1>
           <animated.div style={propsTree}>
             <Image
               className="mx-auto mt-12"
@@ -81,13 +84,9 @@ const Home = () => {
 export default Home
 
 export const propsOne = {
-  from: { opacity: 0, y: -100 },
-  to: { opacity: 1, y: 0 },
-  config: {
-    mass: 10.5,
-    tension: 280,
-    friction: 60,
-  },
+  opacity: 1,
+  transform: 'translate(0px, 0px)',
+  from: { opacity: 0, transform: 'translate(-20px, -20px)' },
 }
 export const propsTwo = {
   from: { opacity: 0, x: 100 },
