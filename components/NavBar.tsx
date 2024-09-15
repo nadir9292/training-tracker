@@ -30,6 +30,12 @@ export default function NavBar({}: Props) {
       y: 0,
     },
   }))
+  const [springs2, api2] = useSpring(() => ({
+    from: {
+      y: 0,
+      scale: '100%',
+    },
+  }))
 
   useEffect(() => {
     api.start({
@@ -38,6 +44,15 @@ export default function NavBar({}: Props) {
       y: isOpenMenu ? -20 : 0,
       config: {
         mass: 2,
+        tension: 120,
+        friction: 14,
+      },
+    })
+    api2.start({
+      y: isOpenMenu ? 500 : 1000,
+      scale: isOpenMenu ? '100%' : '20%',
+      config: {
+        mass: 1,
         tension: 120,
         friction: 14,
       },
@@ -169,7 +184,9 @@ export default function NavBar({}: Props) {
           </div>
         </div>
       )}
-      <MenuMoblie isOpen={isOpenMenu} />
+      <animated.div style={{ ...springs2 }}>
+        <MenuMoblie isOpen={isOpenMenu} />
+      </animated.div>
     </div>
   )
 }
