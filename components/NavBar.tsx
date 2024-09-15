@@ -138,6 +138,7 @@ export default function NavBar({}: Props) {
                 alt="avatar"
                 width={50}
                 height={50}
+                priority
                 className="w-full h-full object-cover rounded-full border-2 shadow-xl"
               />
             </Link>

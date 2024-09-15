@@ -4,7 +4,7 @@ import type { Metadata, Viewport } from 'next'
 const APP_NAME = 'Training Tracker'
 const APP_DEFAULT_TITLE = 'Training Tracker'
 const APP_TITLE_TEMPLATE = '%s - Training Tracker'
-const APP_DESCRIPTION = 'Best PWA app in the world!'
+const APP_DESCRIPTION = 'By Nadir Mansouri :)'
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
