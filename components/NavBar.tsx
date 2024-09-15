@@ -9,11 +9,11 @@ import {
   PlusIcon,
   ClipboardIcon,
   ChevronDoubleUpIcon,
-  UserPlusIcon,
-  UserCircleIcon,
   HomeIcon,
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
+import { animated, useSpring } from '@react-spring/web'
+import MenuMoblie from '@/components/MenuMoblie'
 
 type Props = {}
 
@@ -21,7 +21,28 @@ export default function NavBar({}: Props) {
   const [openNav, setOpenNav] = useState(false)
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
+  const [isOpenMenu, setIsOpenMenu] = useState(false)
   const [jwt, setJwt] = useState(false)
+  const [springs, api] = useSpring(() => ({
+    from: {
+      rotate: 180,
+      scale: 1,
+      y: 0,
+    },
+  }))
+
+  useEffect(() => {
+    api.start({
+      rotate: isOpenMenu ? 0 : 180,
+      scale: isOpenMenu ? 1.5 : 1,
+      y: isOpenMenu ? -20 : 0,
+      config: {
+        mass: 2,
+        tension: 120,
+        friction: 14,
+      },
+    })
+  }, [isOpenMenu, api])
 
   useEffect(() => {
     setMounted(true)
@@ -43,7 +64,7 @@ export default function NavBar({}: Props) {
           <div className="flex items-center justify-between text-blue-gray-900">
             <div className="mr-4 cursor-pointer md:hidden py-1.5 hover:scale-110 text-lg text-offWhite font-BowlbyOne">
               TRAINING
-              <span className="italic text-xs font-orbitron underline">
+              <span className="italic text-sm font-orbitron underline">
                 .tracker
               </span>
             </div>
@@ -100,32 +121,35 @@ export default function NavBar({}: Props) {
           <div className="grid grid-cols-5 gap-4">
             <Link
               href="/"
-              className="rounded-xl w-full text-xs flex flex-col items-center justify-center font-bold text-offWhite"
+              className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
             >
-              <PlusIcon className="h-7 w-7" />
+              <PlusIcon className="h-8 w-8" />
               <span>Training</span>
             </Link>
 
             <Link
               href="/"
-              className="rounded-xl w-full text-xs flex flex-col items-center justify-center font-bold text-offWhite"
+              className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
             >
-              <ClipboardIcon className="h-7 w-7" />
+              <ClipboardIcon className="h-8 w-8" />
               <span>Program</span>
             </Link>
 
-            <Link
-              href="/"
-              className="rounded-xl w-full text-xs flex flex-col items-center justify-center font-bold text-offWhite"
-            >
-              <ChevronDoubleUpIcon className="h-8 w-8" />
-            </Link>
+            <div className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite">
+              <animated.div
+                style={{ ...springs }}
+                onClick={() => setIsOpenMenu(!isOpenMenu)}
+              >
+                <ChevronDoubleUpIcon className="h-8 w-8" />
+              </animated.div>
+              Menu
+            </div>
 
             <Link
               href="/"
-              className="rounded-xl w-full text-xs flex flex-col items-center justify-center font-bold text-offWhite"
+              className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
             >
-              <ChartBarSquareIcon className="h-7 w-7" />
+              <ChartBarSquareIcon className="h-8 w-8" />
               <span>Stats</span>
             </Link>
 
@@ -134,7 +158,7 @@ export default function NavBar({}: Props) {
               className="rounded-xl w-full h-full flex items-center justify-center font-bold text-offWhite"
             >
               <Image
-                src="/logo_google.png"
+                src="/avatar_default.png"
                 alt="avatar"
                 width={50}
                 height={50}
@@ -145,6 +169,7 @@ export default function NavBar({}: Props) {
           </div>
         </div>
       )}
+      <MenuMoblie isOpen={isOpenMenu} />
     </div>
   )
 }
