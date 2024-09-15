@@ -1,27 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bowlby+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Playwrite+AR:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-image: url('/bg-normal.png');
+  background-size: cover;
+  overflow: auto;
+  scroll-behavior: smooth;
+  height: 100vh;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Add margin for text cf. https://stackoverflow.com/questions/6586302/add-padding-to-html-text-input-field */
+input {
+  width: 250px;
+  padding: 5px;
+  font-weight: bold;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+/* styles.css */
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a0aec0;
+  border-radius: 8px;
+}
+
+/* Media query for small screens (phones, < 640px) */
+@media (max-width: 639px) {
+  html,
+  body {
+    background-image: url('/bg-mobile.png');
   }
+}
+
+/* Media query for medium screens (tablets, 640px to 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  html,
+  body {
+    background-image: url('/bg-mobile.png');
+  }
+}
+
+.navbar {
+  position: fixed;
+  height: 75px;
+  width: 100%;
+  z-index: 100; /* Pour s'assurer que la navbar reste au-dessus des autres éléments */
+}
+
+.snackbar {
+  position: fixed;
+  top: 120px;
+  width: 750px;
+  z-index: 100; /* Pour s'assurer que la navbar reste au-dessus des autres éléments */
+}
+
+@media (min-width: 768px) {
+  /* Navbar en haut pour les grands écrans */
+  .navbar {
+    top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Navbar en bas pour les petits écrans */
+  .navbar {
+    bottom: 0;
+    margin-bottom: 1px;
+  }
+  .snackbar {
+    width: 350px;
+  }
+}
+
+.dialog {
+  z-index: 100;
+  position: fixed;
+  width: 90vw; /* 40% de la largeur de la fenêtre */
+  height: 70vh; /* 30% de la hauteur de la fenêtre */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centre la boîte de manière flexible */
+  padding: 20px; /* Espace intérieur de la boîte */
 }
