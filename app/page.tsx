@@ -1,5 +1,5 @@
-import Index from '@/components/Index'
-import NavBar from '@/components/NavBar'
+import Index from '@/components/NavBar'
+import NavBar from '@/components/Index'
 
 const Home = () => {
   return (
