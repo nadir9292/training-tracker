@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   ArrowLeftOnRectangleIcon,
   AdjustmentsHorizontalIcon,
@@ -13,16 +13,13 @@ import {
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { animated, useSpring } from '@react-spring/web'
-import MenuMoblie from '@/components/MenuMoblie'
+import MenuMobile from '@/components/MenuMobile'
 
-type Props = {}
-
-export default function NavBar({}: Props) {
-  const [openNav, setOpenNav] = useState(false)
+export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
   const [isOpenMenu, setIsOpenMenu] = useState(false)
-  const [jwt, setJwt] = useState(false)
+
   const [springs, api] = useSpring(() => ({
     from: {
       rotate: 180,
@@ -185,7 +182,7 @@ export default function NavBar({}: Props) {
         </div>
       )}
       <animated.div style={{ ...springs2 }}>
-        <MenuMoblie isOpen={isOpenMenu} />
+        <MenuMobile isOpen={isOpenMenu} />
       </animated.div>
     </div>
   )

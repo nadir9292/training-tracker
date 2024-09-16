@@ -27,6 +27,7 @@ const config: Config = {
         orbitron: ['Orbitron'],
         bowlbyOne: ['Bowlby One'],
         comfortaa: ['Comfortaa'],
+        happyMonkey: ['Happy Monkey'],
       },
       fontWeight: {
         thin: '100',
