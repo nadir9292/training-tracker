@@ -6,14 +6,14 @@ import {
 } from '@heroicons/react/24/outline'
 import React from 'react'
 
-type Props = { isOpen: Boolean }
+type Props = { isOpen: boolean }
 
-export default function MenuMoblie({ isOpen }: Props) {
+export default function MenuMoblie({ isOpen }: Readonly<Props>) {
   if (!isOpen) return null
 
   return (
-    <div className="shape">
-      <div className="my-6 flex flex-col items-center gap-4 text-3xl w-full text-offWhite font-bold ">
+    <div className="shape font-comfortaa">
+      <div className="my-6 flex flex-col items-center gap-4 text-3xl w-full text-offWhite font-bold">
         <span className="flex items-center">
           <HomeIcon className="h-12 w-12 mr-2" />
           Home

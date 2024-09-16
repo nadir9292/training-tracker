@@ -73,7 +73,7 @@ export default function NavBar({}: Props) {
   }
 
   return (
-    <div>
+    <div className="font-comfortaa">
       {windowWidth >= 960 ? (
         <div className="flex items-center justify-center rounded-none bg-transparent max-w-screen-xl px-6 py-3 border-0 navbar">
           <div className="flex items-center justify-between text-blue-gray-900">
