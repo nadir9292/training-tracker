@@ -14,6 +14,7 @@ import {
 import Image from 'next/image'
 import { animated, useSpring } from '@react-spring/web'
 import MenuMobile from '@/components/MenuMobile'
+import Wave from 'react-wavify'
 
 export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)
@@ -126,55 +127,68 @@ export default function NavBar() {
           </div>
         </div>
       ) : (
-        <div className="mx-auto max-w-screen-xl px-6 py-3 navbar rounded-none bg-transparent border-0 backdrop-blur-lg">
-          <div className="grid grid-cols-5 gap-4">
-            <Link
-              href="/"
-              className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
-            >
-              <PlusIcon className="h-8 w-8" />
-              <span>Training</span>
-            </Link>
-
-            <Link
-              href="/"
-              className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
-            >
-              <ClipboardIcon className="h-8 w-8" />
-              <span>Program</span>
-            </Link>
-
-            <div className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite">
-              <animated.div
-                style={{ ...springs }}
-                onClick={() => setIsOpenMenu(!isOpenMenu)}
+        <div className="waveContainer">
+          <Wave
+            className="wave blur-sm"
+            fill="#2e7479"
+            paused={false}
+            options={{
+              height: 60,
+              amplitude: 20,
+              speed: 0.2,
+              points: 4,
+            }}
+          />
+          <div className="navbar mx-auto max-w-screen-xl px-6 py-3 rounded-none bg-transparent">
+            <div className="grid grid-cols-5 gap-4">
+              <Link
+                href="/"
+                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
               >
-                <ChevronDoubleUpIcon className="h-8 w-8" />
-              </animated.div>
-              Menu
+                <PlusIcon className="h-8 w-8" />
+                <span>Training</span>
+              </Link>
+
+              <Link
+                href="/"
+                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
+              >
+                <ClipboardIcon className="h-8 w-8" />
+                <span>Program</span>
+              </Link>
+
+              <div className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite">
+                <animated.div
+                  style={{ ...springs }}
+                  onClick={() => setIsOpenMenu(!isOpenMenu)}
+                >
+                  <ChevronDoubleUpIcon className="h-8 w-8" />
+                </animated.div>
+                Menu
+              </div>
+
+              <Link
+                href="/"
+                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
+              >
+                <ChartBarSquareIcon className="h-8 w-8" />
+                <span>Stats</span>
+              </Link>
+
+              <Link
+                href="/"
+                className="rounded-xl w-full h-full flex items-center justify-center font-bold text-offWhite"
+              >
+                <Image
+                  src="/avatar_default.png"
+                  alt="avatar"
+                  width={50}
+                  height={50}
+                  priority
+                  className="w-full h-full object-cover rounded-full border-2 shadow-xl"
+                />
+              </Link>
             </div>
-
-            <Link
-              href="/"
-              className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
-            >
-              <ChartBarSquareIcon className="h-8 w-8" />
-              <span>Stats</span>
-            </Link>
-
-            <Link
-              href="/"
-              className="rounded-xl w-full h-full flex items-center justify-center font-bold text-offWhite"
-            >
-              <Image
-                src="/avatar_default.png"
-                alt="avatar"
-                width={50}
-                height={50}
-                priority
-                className="w-full h-full object-cover rounded-full border-2 shadow-xl"
-              />
-            </Link>
           </div>
         </div>
       )}
