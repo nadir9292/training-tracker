@@ -15,6 +15,12 @@ import Image from 'next/image'
 import { animated, useSpring } from '@react-spring/web'
 import MenuMobile from '@/components/MenuMobile'
 import Wave from 'react-wavify'
+import {
+  AddIcon,
+  BoardIcon,
+  ChartIcon,
+  ChevronIcon,
+} from '@/components/SvgRessource'
 
 export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)
@@ -24,7 +30,7 @@ export default function NavBar() {
   const [isAnimating, setIsAnimating] = useState(false)
   const initialHeight = 125
   const maxHeight = 500
-  const increment = 8
+  const increment = 10
   const intervalTime = 10
 
   const toggleHeightSmoothly = () => {
@@ -71,7 +77,7 @@ export default function NavBar() {
       scale: isOpenMenu ? 1.5 : 1,
       y: isOpenMenu ? -20 : 0,
       config: {
-        mass: 2,
+        mass: 1.5,
         tension: 120,
         friction: 14,
       },
@@ -169,7 +175,7 @@ export default function NavBar() {
                 href="/"
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
               >
-                <PlusIcon className="h-8 w-8" />
+                <AddIcon height={42} width={42} />
                 <span>Training</span>
               </Link>
 
@@ -177,14 +183,14 @@ export default function NavBar() {
                 href="/"
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
               >
-                <ClipboardIcon className="h-8 w-8" />
+                <BoardIcon height={42} width={42} />
                 <span>Program</span>
               </Link>
 
               <div className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite">
                 <animated.div style={{ ...springs }}>
                   <button onClick={toggleHeightSmoothly} disabled={isAnimating}>
-                    <ChevronDoubleUpIcon className="h-8 w-8" />
+                    <ChevronIcon height={42} width={42} />
                   </button>
                 </animated.div>
                 Menu
@@ -194,22 +200,23 @@ export default function NavBar() {
                 href="/"
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
               >
-                <ChartBarSquareIcon className="h-8 w-8" />
+                <ChartIcon height={42} width={42} />
                 <span>Stats</span>
               </Link>
 
               <Link
                 href="/"
-                className="rounded-xl w-full h-full flex items-center justify-center font-bold text-offWhite"
+                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
               >
                 <Image
                   src="/avatar_default.png"
                   alt="avatar"
-                  width={50}
-                  height={50}
+                  width={42}
+                  height={42}
                   priority
-                  className="w-full h-full object-cover rounded-full border-2 shadow-xl"
+                  className="rounded-full border-2 border-gray-800"
                 />
+                <span>Nadir</span>
               </Link>
             </div>
           </div>

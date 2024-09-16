@@ -79,7 +79,7 @@ const config: Config = {
         lg: '0 8px 16px var(--tw-shadow-color)',
       },
       blur: {
-        xs: '2px',
+        xs: '1px',
       },
     },
   },
