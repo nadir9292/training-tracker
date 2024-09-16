@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   ArrowLeftOnRectangleIcon,
   AdjustmentsHorizontalIcon,
@@ -29,7 +29,6 @@ export default function NavBar() {
   }))
   const [springs2, api2] = useSpring(() => ({
     from: {
-      y: 0,
       scale: '100%',
     },
   }))
@@ -46,12 +45,10 @@ export default function NavBar() {
       },
     })
     api2.start({
-      y: isOpenMenu ? 500 : 1000,
       scale: isOpenMenu ? '100%' : '20%',
       config: {
-        mass: 1,
-        tension: 120,
-        friction: 14,
+        tension: 180,
+        friction: 12,
       },
     })
   }, [isOpenMenu, api])
@@ -181,7 +178,7 @@ export default function NavBar() {
           </div>
         </div>
       )}
-      <animated.div style={{ ...springs2 }}>
+      <animated.div style={{ ...springs2 }} className="">
         <MenuMobile isOpen={isOpenMenu} />
       </animated.div>
     </div>
