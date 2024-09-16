@@ -129,7 +129,7 @@ export default function NavBar() {
       ) : (
         <div className="waveContainer">
           <Wave
-            className="wave blur-xs"
+            className="wave blur-xs shadow-none"
             fill="#2e7479"
             paused={false}
             options={{
