@@ -75,6 +75,7 @@ input {
   right: 0;
   width: 100%;
   overflow: hidden;
+  z-index: 80;
 }
 
 .waveContainer > .wave {
@@ -82,14 +83,10 @@ input {
   width: 100%;
   bottom: 0;
   left: 0;
-  box-shadow: none;
 }
 
-.snackbar {
-  position: fixed;
-  top: 120px;
-  width: 750px;
-  z-index: 100; /* Pour s'assurer que la navbar reste au-dessus des autres éléments */
+.menuNavbar {
+  z-index: 90;
 }
 
 @media (min-width: 768px) {
@@ -104,15 +101,5 @@ input {
   .navbar {
     bottom: 0;
     margin-bottom: 1px;
-    animation: morphNavBar 12s ease-in-out infinite;
   }
-  .snackbar {
-    width: 350px;
-  }
-}
-
-.dialog {
-  position: fixed;
-  height: 70vh; /* 30% de la hauteur de la fenêtre */
-  top: 50%;
 }

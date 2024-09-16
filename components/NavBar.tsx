@@ -157,10 +157,10 @@ export default function NavBar() {
           </div>
         </div>
       ) : (
-        <div className="waveContainer border">
+        <div className="waveContainer">
           <Wave
             className="wave blur-xs"
-            style={{ height: heightWave }}
+            style={{ height: heightWave, zIndex: 50 }}
             fill="#2e7479"
             paused={false}
             options={{
@@ -220,9 +220,9 @@ export default function NavBar() {
               </Link>
             </div>
           </div>
+          <MenuMobile isOpen={isOpenMenu} />
         </div>
       )}
-      <MenuMobile isOpen={isOpenMenu} />
     </div>
   )
 }
