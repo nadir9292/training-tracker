@@ -129,14 +129,13 @@ export default function NavBar() {
       ) : (
         <div className="waveContainer">
           <Wave
-            className="wave blur-sm"
+            className="wave blur-xs"
             fill="#2e7479"
             paused={false}
             options={{
-              height: 60,
-              amplitude: 20,
-              speed: 0.2,
-              points: 4,
+              amplitude: 15,
+              speed: 0.15,
+              points: 3,
             }}
           />
           <div className="navbar mx-auto max-w-screen-xl px-6 py-3 rounded-none bg-transparent">
