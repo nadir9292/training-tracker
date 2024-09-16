@@ -23,8 +23,8 @@ export default function NavBar() {
   const [heightWave, setHeightWave] = useState(125)
   const [isAnimating, setIsAnimating] = useState(false)
   const initialHeight = 125
-  const maxHeight = 400
-  const increment = 4
+  const maxHeight = 500
+  const increment = 8
   const intervalTime = 10
 
   const toggleHeightSmoothly = () => {
