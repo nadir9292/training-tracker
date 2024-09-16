@@ -12,21 +12,21 @@ export default function MenuMoblie({ isOpen }: Props) {
   if (!isOpen) return null
 
   return (
-    <div className=" bg-primaryTitle py-4 border-2 border-primaryBackground shadow-xl menuMobile">
-      <ul className="my-6 flex flex-col items-center gap-2">
-        <li className="flex items-center py-2 text-center text-3xl">
-          <HomeIcon className="h-8 w-8" />
-          <span>Home</span>
-        </li>
-        <li className="flex items-center py-2 text-center text-3xl">
-          <Cog6ToothIcon className="h-8 w-8" />
-          <span>Settings</span>
-        </li>
-        <li className="flex items-center py-2 text-center text-3xl">
-          <ArrowLeftStartOnRectangleIcon className="h-8 w-8" />
-          <span>Log out</span>
-        </li>
-      </ul>
+    <div className="shape">
+      <div className="my-6 flex flex-col items-center gap-4 text-3xl w-full text-offWhite font-bold ">
+        <span className="flex items-center">
+          <HomeIcon className="h-12 w-12 mr-2" />
+          Home
+        </span>
+        <span className="flex items-center">
+          <Cog6ToothIcon className="h-12 w-12 mr-2" />
+          Settings
+        </span>
+        <span className="flex items-center text-red-700">
+          <ArrowLeftStartOnRectangleIcon className="h-12 w-12 mr-2" />
+          Log out
+        </span>
+      </div>
     </div>
   )
 }
