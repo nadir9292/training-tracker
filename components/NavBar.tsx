@@ -20,17 +20,48 @@ export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
   const [isOpenMenu, setIsOpenMenu] = useState(false)
+  const [heightWave, setHeightWave] = useState(125)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const initialHeight = 125
+  const maxHeight = 400
+  const increment = 4
+  const intervalTime = 10
+
+  const toggleHeightSmoothly = () => {
+    setIsAnimating(true)
+    setIsOpenMenu(true)
+
+    if (heightWave < maxHeight) {
+      const increaseInterval = setInterval(() => {
+        setHeightWave((prevHeight) => {
+          if (prevHeight + increment >= maxHeight) {
+            clearInterval(increaseInterval)
+            setIsAnimating(false)
+            return maxHeight
+          }
+          return prevHeight + increment
+        })
+      }, intervalTime)
+    } else {
+      const decreaseInterval = setInterval(() => {
+        setHeightWave((prevHeight) => {
+          if (prevHeight - increment <= initialHeight) {
+            clearInterval(decreaseInterval)
+            setIsAnimating(false)
+            setIsOpenMenu(false)
+            return initialHeight
+          }
+          return prevHeight - increment
+        })
+      }, intervalTime)
+    }
+  }
 
   const [springs, api] = useSpring(() => ({
     from: {
       rotate: 180,
       scale: 1,
       y: 0,
-    },
-  }))
-  const [springs2, api2] = useSpring(() => ({
-    from: {
-      scale: '100%',
     },
   }))
 
@@ -43,13 +74,6 @@ export default function NavBar() {
         mass: 2,
         tension: 120,
         friction: 14,
-      },
-    })
-    api2.start({
-      scale: isOpenMenu ? '100%' : '20%',
-      config: {
-        tension: 180,
-        friction: 12,
       },
     })
   }, [isOpenMenu, api])
@@ -127,9 +151,10 @@ export default function NavBar() {
           </div>
         </div>
       ) : (
-        <div className="waveContainer">
+        <div className="waveContainer border">
           <Wave
             className="wave blur-xs"
+            style={{ height: heightWave }}
             fill="#2e7479"
             paused={false}
             options={{
@@ -157,11 +182,10 @@ export default function NavBar() {
               </Link>
 
               <div className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite">
-                <animated.div
-                  style={{ ...springs }}
-                  onClick={() => setIsOpenMenu(!isOpenMenu)}
-                >
-                  <ChevronDoubleUpIcon className="h-8 w-8" />
+                <animated.div style={{ ...springs }}>
+                  <button onClick={toggleHeightSmoothly} disabled={isAnimating}>
+                    <ChevronDoubleUpIcon className="h-8 w-8" />
+                  </button>
                 </animated.div>
                 Menu
               </div>
@@ -191,9 +215,7 @@ export default function NavBar() {
           </div>
         </div>
       )}
-      <animated.div style={{ ...springs2 }} className="">
-        <MenuMobile isOpen={isOpenMenu} />
-      </animated.div>
+      <MenuMobile isOpen={isOpenMenu} />
     </div>
   )
 }

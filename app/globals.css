@@ -80,7 +80,6 @@ input {
   position: fixed;
   width: 100%;
   bottom: 0;
-  height: 120px;
   left: 0;
   box-shadow: none;
 }
@@ -115,79 +114,4 @@ input {
   position: fixed;
   height: 70vh; /* 30% de la hauteur de la fenêtre */
   top: 50%;
-}
-
-.menuMobile {
-  z-index: 100;
-  position: fixed;
-  width: 80vw; /* 40% de la largeur de la fenêtre */
-  height: 70vh; /* 30% de la hauteur de la fenêtre */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Centre la boîte de manière flexible */
-  padding: 20px; /* Espace intérieur de la boîte */
-}
-:root {
-  --primary: #2e7479;
-  --secondary: #b4b1ae;
-  --third: #2e7479;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.shape {
-  position: fixed;
-  width: 80vw;
-  height: 80vw; /* Assure que la hauteur soit proportionnelle à la largeur pour un effet circulaire */
-  left: 50%; /* Centrer horizontalement */
-  transform: translateX(-50%); /* Centre uniquement horizontalement */
-  background: linear-gradient(20deg, var(--primary) 0%, var(--secondary) 100%);
-  animation: morph 12s ease-in-out infinite;
-  border-radius: 50%; /* Rend la forme circulaire */
-  border: solid 4px;
-  border-color: #cf6d5e;
-  transition: all 1s ease-in-out;
-  padding: 50px;
-  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.19);
-}
-
-@keyframes morph {
-  0% {
-    border-radius: 40% 60% 50% 50% / 60% 40% 50% 50%;
-    background: linear-gradient(
-      20deg,
-      var(--primary) 0%,
-      var(--secondary) 100%
-    );
-  }
-
-  25% {
-    border-radius: 60% 40% 60% 40% / 50% 50% 40% 60%;
-    background: linear-gradient(45deg, var(--third) 0%, var(--secondary) 100%);
-  }
-
-  50% {
-    border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
-    background: linear-gradient(
-      90deg,
-      var(--primary) 0%,
-      var(--secondary) 100%
-    );
-  }
-
-  75% {
-    border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
-    background: linear-gradient(135deg, var(--third) 0%, var(--secondary) 100%);
-  }
-
-  100% {
-    border-radius: 40% 60% 50% 50% / 60% 40% 50% 50%;
-    background: linear-gradient(
-      20deg,
-      var(--primary) 0%,
-      var(--secondary) 100%
-    );
-  }
 }

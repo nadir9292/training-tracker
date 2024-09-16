@@ -12,7 +12,7 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
   if (!isOpen) return null
 
   return (
-    <div className="shape font-happyMonkey flex justify-center items-center">
+    <div className="font-happyMonkey flex justify-center items-center">
       <div className="grid grid-cols-1 gap-4 text-3xl text-offWhite font-bold">
         <Link href="/" className="flex items-center">
           <HomeIcon className="h-12 w-12 mr-2" />
