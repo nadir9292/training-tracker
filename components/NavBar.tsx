@@ -138,7 +138,7 @@ export default function NavBar() {
               points: 3,
             }}
           />
-          <div className="navbar mx-auto max-w-screen-xl px-6 py-3 rounded-none bg-transparent">
+          <div className="navbar mx-auto max-w-screen-xl px-6 py-3 shadow-none">
             <div className="grid grid-cols-5 gap-4">
               <Link
                 href="/"
