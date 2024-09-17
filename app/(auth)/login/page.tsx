@@ -1,4 +1,4 @@
-import NavBar from '@/components/NavBar'
+import NavBar from '@/components/navbar/NavBar'
 import React from 'react'
 
 type Props = {}
@@ -6,7 +6,6 @@ type Props = {}
 export default function page({}: Props) {
   return (
     <>
-      <NavBar />
       <h1>LOGIN</h1>
     </>
   )

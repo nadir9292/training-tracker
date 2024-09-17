@@ -1,6 +1,7 @@
+import PageTransition from '@/components/PageTransition'
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
-import localFont from 'next/font/local'
+import NavBar from '@/components/navbar/NavBar'
 
 const APP_NAME = 'Training Tracker'
 const APP_DEFAULT_TITLE = 'Training Tracker'
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#26757a',
+  themeColor: '#AC9BEF',
 }
 
 export default function RootLayout({
@@ -54,7 +55,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <PageTransition>{children}</PageTransition>
+        <NavBar />
+      </body>
     </html>
   )
 }

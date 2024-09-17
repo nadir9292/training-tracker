@@ -1,10 +1,8 @@
-import Index from '@/components/NavBar'
-import NavBar from '@/components/Index'
+import Index from '@/components/Index'
 
 const Home = () => {
   return (
     <>
-      <NavBar />
       <Index />
     </>
   )

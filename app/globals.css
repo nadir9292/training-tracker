@@ -69,6 +69,7 @@ input {
 }
 
 .waveContainer {
+  margin-bottom: 520px;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -86,7 +87,11 @@ input {
 }
 
 .menuNavbar {
-  z-index: 90;
+  position: fixed;
+  width: 70vw;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 80;
 }
 
 @media (min-width: 768px) {

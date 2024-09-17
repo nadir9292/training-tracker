@@ -5,15 +5,11 @@ import React, { useEffect, useState } from 'react'
 import {
   ArrowLeftOnRectangleIcon,
   AdjustmentsHorizontalIcon,
-  ChartBarSquareIcon,
-  PlusIcon,
-  ClipboardIcon,
-  ChevronDoubleUpIcon,
   HomeIcon,
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { animated, useSpring } from '@react-spring/web'
-import MenuMobile from '@/components/MenuMobile'
+import MenuMobile from '@/components/navbar/MenuMobile'
 import Wave from 'react-wavify'
 import {
   AddIcon,
@@ -26,42 +22,6 @@ export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
   const [isOpenMenu, setIsOpenMenu] = useState(false)
-  const [heightWave, setHeightWave] = useState(125)
-  const [isAnimating, setIsAnimating] = useState(false)
-  const initialHeight = 125
-  const maxHeight = 500
-  const increment = 10
-  const intervalTime = 10
-
-  const toggleHeightSmoothly = (forceClose: boolean) => {
-    setIsAnimating(true)
-    setIsOpenMenu(true)
-
-    if (heightWave < maxHeight && !forceClose) {
-      const increaseInterval = setInterval(() => {
-        setHeightWave((prevHeight) => {
-          if (prevHeight + increment >= maxHeight) {
-            clearInterval(increaseInterval)
-            setIsAnimating(false)
-            return maxHeight
-          }
-          return prevHeight + increment
-        })
-      }, intervalTime)
-    } else {
-      const decreaseInterval = setInterval(() => {
-        setHeightWave((prevHeight) => {
-          setIsOpenMenu(false)
-          if (prevHeight - increment <= initialHeight) {
-            clearInterval(decreaseInterval)
-            setIsAnimating(false)
-            return initialHeight
-          }
-          return prevHeight - increment
-        })
-      }, intervalTime)
-    }
-  }
 
   const [springs, api] = useSpring(() => ({
     from: {
@@ -108,21 +68,20 @@ export default function NavBar() {
       ) : (
         <div className="waveContainer">
           <Wave
-            className="wave blur-xs"
+            className="wave"
             fill="#FAF9F6"
-            style={{ height: heightWave, zIndex: 50 }}
+            style={{ height: 125, zIndex: 50 }}
             paused={false}
             options={{
-              amplitude: heightWave > 125 && heightWave < 500 ? 100 : 15,
-              speed: heightWave > 125 && heightWave < 500 ? 0.2 : 0.15,
-              points: heightWave > 125 && heightWave < 500 ? 2 : 3,
+              amplitude: 15,
+              speed: 0.15,
+              points: 3,
             }}
           />
           <div className="navbar mx-auto max-w-screen-xl px-6 py-3">
             <div className="grid grid-cols-5 gap-4">
               <Link
                 href="/login"
-                onClick={() => toggleHeightSmoothly(true)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <AddIcon height={42} width={42} />
@@ -131,7 +90,6 @@ export default function NavBar() {
 
               <Link
                 href="/"
-                onClick={() => toggleHeightSmoothly(true)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <BoardIcon height={42} width={42} />
@@ -140,19 +98,14 @@ export default function NavBar() {
 
               <div className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900">
                 <animated.div style={{ ...springs }}>
-                  <button
-                    onClick={() => toggleHeightSmoothly(false)}
-                    disabled={isAnimating}
-                  >
-                    <ChevronIcon height={42} width={42} />
+                  <button onClick={() => setIsOpenMenu(!isOpenMenu)}>
+                    <ChevronIcon height={52} width={52} />
                   </button>
                 </animated.div>
-                Menu
               </div>
 
               <Link
                 href="/"
-                onClick={() => toggleHeightSmoothly(true)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <ChartIcon height={42} width={42} />

@@ -9,7 +9,6 @@ type Props = {}
 
 export default function Index({}: Props) {
   const propsFirst = useSpring(propsOne)
-  const propsSecond = useSpring(propsTwo)
   const propsTree = useSpring(propsWeight)
   const propsFourth = useSpring(propsFour)
   const [windowWidth, setWindowWidth] = useState(0)
@@ -70,15 +69,7 @@ export const propsOne = {
   transform: 'translate(0px, 0px)',
   from: { opacity: 0, transform: 'translate(-20px, -20px)' },
 }
-export const propsTwo = {
-  from: { opacity: 0, x: 100 },
-  to: { opacity: 1, x: 0 },
-  config: {
-    mass: 10.5,
-    tension: 280,
-    friction: 60,
-  },
-}
+
 export const propsWeight = {
   from: { opacity: 0, y: -100 },
   to: { opacity: 1, y: 0 },
