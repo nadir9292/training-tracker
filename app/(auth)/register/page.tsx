@@ -1,7 +1,13 @@
-import React from "react"
+import NavBar from '@/components/NavBar'
+import React from 'react'
 
 type Props = {}
 
 export default function page({}: Props) {
-  return <div>REGISTER</div>
+  return (
+    <>
+      <NavBar />
+      <h1>REGISTER</h1>
+    </>
+  )
 }

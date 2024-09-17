@@ -33,11 +33,11 @@ export default function NavBar() {
   const increment = 10
   const intervalTime = 10
 
-  const toggleHeightSmoothly = () => {
+  const toggleHeightSmoothly = (forceClose: boolean) => {
     setIsAnimating(true)
     setIsOpenMenu(true)
 
-    if (heightWave < maxHeight) {
+    if (heightWave < maxHeight && !forceClose) {
       const increaseInterval = setInterval(() => {
         setHeightWave((prevHeight) => {
           if (prevHeight + increment >= maxHeight) {
@@ -51,10 +51,10 @@ export default function NavBar() {
     } else {
       const decreaseInterval = setInterval(() => {
         setHeightWave((prevHeight) => {
+          setIsOpenMenu(false)
           if (prevHeight - increment <= initialHeight) {
             clearInterval(decreaseInterval)
             setIsAnimating(false)
-            setIsOpenMenu(false)
             return initialHeight
           }
           return prevHeight - increment
@@ -100,80 +100,30 @@ export default function NavBar() {
   return (
     <div className="font-comfortaa">
       {windowWidth >= 960 ? (
-        <div className="flex items-center justify-center rounded-none bg-transparent max-w-screen-xl px-6 py-3 border-0 navbar">
-          <div className="flex items-center justify-between text-blue-gray-900">
-            <div className="mr-4 cursor-pointer md:hidden py-1.5 hover:scale-110 text-lg text-offWhite font-BowlbyOne">
-              TRAINING
-              <span className="italic text-sm font-orbitron underline">
-                .tracker
-              </span>
-            </div>
-          </div>
-          <div className="flex justify-center border-2 rounded-xl ml-4">
-            <button className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110">
-              <span>
-                <PlusIcon className="h-6 w-6 mr-2" />
-              </span>
-              training
-            </button>
-            <Link href="/view-training">
-              <button className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110">
-                <span>
-                  <ClipboardIcon className="h-6 w-6 mr-2" />
-                </span>
-                VIEW TRAINING
-              </button>
-            </Link>
-            <Link href="/view-stats">
-              <button className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110">
-                <span>
-                  <ChartBarSquareIcon className="h-6 w-6 mr-2" />
-                </span>
-                STATS
-              </button>
-            </Link>
-          </div>
-          <div className="flex justify-center border-2 rounded-xl ml-4">
-            <Link href="/login">
-              <button className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110">
-                LOGIN
-              </button>
-            </Link>
-            <Link href="/register">
-              <button className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110">
-                REGISTER
-              </button>
-            </Link>
-          </div>
-          <div className="flex justify-center border-2 rounded-xl ml-4">
-            <Link href="/settings">
-              <button className="flex items-center text-offWhite text-md lg:text-lg hover:scale-110">
-                <span>
-                  <AdjustmentsHorizontalIcon className="h-6 w-6 mr-2" />
-                </span>
-                SETTINGS
-              </button>
-            </Link>
-          </div>
+        <div>
+          <h1 className="text-center text-8xl">
+            work in progress, please go to mobile version.
+          </h1>
         </div>
       ) : (
         <div className="waveContainer">
           <Wave
-            className="wave blur-xs opacity-25"
+            className="wave blur-xs"
+            fill="#FAF9F6"
             style={{ height: heightWave, zIndex: 50 }}
-            fill="#BB9BECff"
             paused={false}
             options={{
-              amplitude: 15,
-              speed: 0.15,
-              points: 3,
+              amplitude: heightWave > 125 && heightWave < 500 ? 100 : 15,
+              speed: heightWave > 125 && heightWave < 500 ? 0.2 : 0.15,
+              points: heightWave > 125 && heightWave < 500 ? 2 : 3,
             }}
           />
           <div className="navbar mx-auto max-w-screen-xl px-6 py-3">
             <div className="grid grid-cols-5 gap-4">
               <Link
-                href="/"
-                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
+                href="/login"
+                onClick={() => toggleHeightSmoothly(true)}
+                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <AddIcon height={42} width={42} />
                 <span>Training</span>
@@ -181,15 +131,19 @@ export default function NavBar() {
 
               <Link
                 href="/"
-                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
+                onClick={() => toggleHeightSmoothly(true)}
+                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <BoardIcon height={42} width={42} />
                 <span>Program</span>
               </Link>
 
-              <div className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite">
+              <div className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900">
                 <animated.div style={{ ...springs }}>
-                  <button onClick={toggleHeightSmoothly} disabled={isAnimating}>
+                  <button
+                    onClick={() => toggleHeightSmoothly(false)}
+                    disabled={isAnimating}
+                  >
                     <ChevronIcon height={42} width={42} />
                   </button>
                 </animated.div>
@@ -198,7 +152,8 @@ export default function NavBar() {
 
               <Link
                 href="/"
-                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
+                onClick={() => toggleHeightSmoothly(true)}
+                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <ChartIcon height={42} width={42} />
                 <span>Stats</span>
@@ -206,7 +161,7 @@ export default function NavBar() {
 
               <Link
                 href="/"
-                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-offWhite"
+                className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <Image
                   src="/avatar_default.png"
