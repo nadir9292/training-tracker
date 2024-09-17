@@ -13,7 +13,12 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
   )
   useEffect(() => {
     api.start({
+      config: {
+        tension: 210,
+        friction: 20,
+      },
       opacity: isOpen ? 1 : 0,
+      height: isOpen ? 40 : 0,
     })
   }, [isOpen, api])
 
@@ -27,7 +32,7 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
       <div className="grid grid-cols-1 gap-6 text-3xl text-offWhite font-bold">
         {trails.map((props, index) => (
           <animated.div style={props} key={index}>
-            Hello World {index}
+            Hello World
           </animated.div>
         ))}
       </div>
