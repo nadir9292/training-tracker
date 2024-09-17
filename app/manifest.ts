@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       'Training tracker is an application that helps athletes with their training. ',
     start_url: '/',
     display: 'standalone',
-    background_color: '#26757a',
-    theme_color: '#26757a',
+    background_color: '#AC9BEF',
+    theme_color: '#AC9BEF',
     icons: [
       {
         src: '/logo-192.png',
