@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-const Typewriter = ({ text, delay, style }) => {
+type Props = { text: any; delay: any; style: any }
+
+const Typewriter = ({ text, delay, style }: Readonly<Props>) => {
   const [currentText, setCurrentText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
 
