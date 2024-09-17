@@ -159,9 +159,9 @@ export default function NavBar() {
       ) : (
         <div className="waveContainer">
           <Wave
-            className="wave blur-xs"
+            className="wave blur-xs opacity-25"
             style={{ height: heightWave, zIndex: 50 }}
-            fill="#2e7479"
+            fill="#BB9BECff"
             paused={false}
             options={{
               amplitude: 15,
