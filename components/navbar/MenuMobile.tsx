@@ -11,16 +11,17 @@ import React, { useEffect } from 'react'
 type Props = { isOpen: boolean }
 
 export default function MenuMobile({ isOpen }: Readonly<Props>) {
-  const [trails, api] = useTrail(
-    4,
-    () => ({
-      opacity: 0,
-      height: 0,
-    }),
-    []
-  )
+  const [props, apiDiv] = useSpring(() => ({}), [])
+  const [trails, api] = useTrail(4, () => ({}), [])
 
   useEffect(() => {
+    apiDiv.start({
+      y: isOpen ? 0 : 100,
+      config: {
+        tension: 180,
+        friction: 12,
+      },
+    })
     api.start({
       config: {
         tension: 170,
@@ -36,11 +37,13 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
   if (!isOpen) return null
 
   return (
-    <div className="menuNavbar font-happyMonkey flex justify-center items-center inset-x-0 bottom-20">
+    <div className="menuNavbar font-happyMonkey flex justify-center items-center inset-x-0 bottom-16">
       <animated.div
         style={{
           backgroundColor: '#FAF9F6',
           borderRadius: '80px 80px 0px 0px',
+          boxShadow: 'rgba(100, 100, 111, 0.2) 1px 0px 0px 0px',
+          ...props,
         }}
       >
         <div className="grid grid-cols-1 text-3xl text-gray-900 font-bold p-6 h-80">

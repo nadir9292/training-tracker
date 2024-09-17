@@ -55,9 +55,7 @@ export default function Index({}: Props) {
 
       <animated.div style={propsFourth}>
         <div className="mx-auto px-4 py-6 rounded-lg">
-          <h1 className="text-center text-offWhite">
-            COMPOSANT A METTRE ICI (JSP QUOI MDR)
-          </h1>
+          <h1 className="text-center text-offWhite">COMPOSANT A METTRE ICI</h1>
         </div>
       </animated.div>
     </div>
