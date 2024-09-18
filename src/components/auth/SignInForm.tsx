@@ -33,7 +33,7 @@ export default function SignInForm() {
   return (
     <form
       onSubmit={signIn}
-      className="grid grid-cols-1 gap-2 w-[80vw] max-w-md"
+      className="grid grid-cols-1 gap-6 w-[80vw] max-w-md"
     >
       <input
         className="font-gray-900 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-14 w-full"
