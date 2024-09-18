@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
 import NavBar from '@/components/navbar/NavBar'
+import { AppWrapper } from '@/components/context'
 
 const APP_NAME = 'Training Tracker'
 const APP_DEFAULT_TITLE = 'Training Tracker'
@@ -55,8 +56,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
-        <NavBar />
+        <AppWrapper>
+          {children}
+          <NavBar />
+        </AppWrapper>
       </body>
     </html>
   )

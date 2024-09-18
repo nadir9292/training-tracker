@@ -15,7 +15,7 @@ body {
   height: 100vh;
   transition-property: opacity, transform, filter;
   transition-timing-function: ease-in-out;
-  transition-duration: 500ms;
+  transition-duration: 400ms;
 }
 
 .page-transition {
