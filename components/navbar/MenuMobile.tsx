@@ -20,6 +20,7 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
       config: {
         tension: 180,
         friction: 12,
+        precision: 0.001,
       },
     })
     api.start({
@@ -27,7 +28,6 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
         tension: 170,
         friction: 26,
         mass: 1,
-        precision: 0.01,
       },
       opacity: isOpen ? 1 : 0,
       height: isOpen ? 50 : 0,
@@ -42,7 +42,6 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
         style={{
           backgroundColor: '#FAF9F6',
           borderRadius: '80px 80px 0px 0px',
-          boxShadow: 'rgba(100, 100, 111, 0.2) 1px 0px 0px 0px',
           ...props,
         }}
       >

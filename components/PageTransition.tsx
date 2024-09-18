@@ -22,10 +22,29 @@ export default function PageTransition({
   }, [pathname])
 
   const transitions = useTransition(currentPage, {
-    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
-    config: { duration: 400 },
+    from: {
+      opacity: 0,
+      transform: 'translate3d(100%,0,0)',
+      position: 'fixed',
+      width: '100%',
+    },
+    enter: {
+      opacity: 1,
+      transform: 'translate3d(0%,0,0)',
+      position: 'fixed',
+      width: '100%',
+    },
+    leave: {
+      opacity: 0,
+      transform: 'translate3d(-50%,0,0)',
+      position: 'fixed',
+      width: '100%',
+    },
+    config: {
+      tension: 120,
+      friction: 14,
+      precision: 0.001,
+    },
   })
 
   if (!mounted) {
@@ -34,8 +53,8 @@ export default function PageTransition({
 
   return (
     <>
-      {transitions((style, item) => (
-        <animated.div key={item} style={style}>
+      {transitions((props) => (
+        <animated.div key={pathname} style={props}>
           {children}
         </animated.div>
       ))}

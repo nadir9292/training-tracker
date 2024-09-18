@@ -2,11 +2,6 @@
 
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import {
-  ArrowLeftOnRectangleIcon,
-  AdjustmentsHorizontalIcon,
-  HomeIcon,
-} from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { animated, useSpring } from '@react-spring/web'
 import MenuMobile from '@/components/navbar/MenuMobile'
@@ -82,6 +77,7 @@ export default function NavBar() {
             <div className="grid grid-cols-5 gap-4">
               <Link
                 href="/login"
+                onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <AddIcon height={42} width={42} />
@@ -90,6 +86,7 @@ export default function NavBar() {
 
               <Link
                 href="/"
+                onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <BoardIcon height={42} width={42} />
@@ -106,6 +103,7 @@ export default function NavBar() {
 
               <Link
                 href="/"
+                onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <ChartIcon height={42} width={42} />
@@ -114,6 +112,7 @@ export default function NavBar() {
 
               <Link
                 href="/"
+                onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <Image
@@ -132,41 +131,5 @@ export default function NavBar() {
         </div>
       )}
     </div>
-  )
-}
-
-export const NavList = () => {
-  return (
-    <ul className="my-6 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <h1 className="py-1 font-bold text-center text-black">
-        <Link href="/" className="flex items-center">
-          <span>
-            <HomeIcon className="h-6 w-6 mr-5" />
-          </span>
-           HOME
-        </Link>
-      </h1>
-      <hr />
-      <h1 className="py-1 font-bold text-black text-center">
-        <Link
-          href="/settings"
-          className="flex items-center hover:text-blue-500 transition-colors"
-        >
-          <span>
-            <AdjustmentsHorizontalIcon className="h-6 w-6 mr-5" />
-          </span>
-          SETTINGS
-        </Link>
-      </h1>
-      <hr />
-      <h1 className="py-1 font-bold text-center">
-        <Link href="/" className="flex items-center">
-          <span>
-            <ArrowLeftOnRectangleIcon className="h-6 w-6 mr-5" />
-          </span>
-          LOG OUT
-        </Link>
-      </h1>
-    </ul>
   )
 }
