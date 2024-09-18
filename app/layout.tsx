@@ -1,7 +1,7 @@
-import { AppWrapper } from '@/src/components/context'
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
 import NavBar from '@/src/components/navbar/NavBar'
+import { AppWrapper } from '@/src/components/context'
 
 const APP_NAME = 'Training Tracker'
 const APP_DEFAULT_TITLE = 'Training Tracker'

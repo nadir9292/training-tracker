@@ -49,6 +49,7 @@ const config: Config = {
         periwinkle: '#C7C4FBff',
         polynesianBlue: '#2C50A3ff',
         slateBlue: '#8357DBff',
+        lightYellow: '#FDFD96',
         offWhite: '#FAF9F6',
       },
       fontSize: {

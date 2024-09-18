@@ -24,9 +24,10 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
+    "**/*.js",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/SvgRessource.tsx"
+    "src/components/auth/SessionWrapper.js"
   ],
   "exclude": ["node_modules"]
 }
