@@ -25,20 +25,14 @@ export default function PageTransition({
     from: {
       opacity: 0,
       transform: 'translate3d(100%,0,0)',
-      position: 'fixed',
-      width: '100%',
     },
     enter: {
       opacity: 1,
       transform: 'translate3d(0%,0,0)',
-      position: 'fixed',
-      width: '100%',
     },
     leave: {
       opacity: 0,
       transform: 'translate3d(-50%,0,0)',
-      position: 'fixed',
-      width: '100%',
     },
     config: {
       tension: 120,
@@ -54,7 +48,10 @@ export default function PageTransition({
   return (
     <>
       {transitions((props) => (
-        <animated.div key={pathname} style={props}>
+        <animated.div
+          key={pathname}
+          style={{ position: 'fixed', width: '100%', ...props }}
+        >
           {children}
         </animated.div>
       ))}
