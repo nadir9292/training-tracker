@@ -1,6 +1,7 @@
 'use client'
 
 import Typewriter from '@/components/Typewriter'
+import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
 type Props = {}
