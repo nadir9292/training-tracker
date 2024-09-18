@@ -3,15 +3,15 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { animated, useSpring } from '@react-spring/web'
-import MenuMobile from '@/components/navbar/MenuMobile'
+import MenuMobile from '@/src/components/navbar/MenuMobile'
 import Wave from 'react-wavify'
 import {
   AddIcon,
   BoardIcon,
   ChartIcon,
   ChevronIcon,
-} from '@/components/SvgRessource'
-import { TransitionLink } from '@/components/TransitionLink'
+} from '@/src/components/SvgRessource'
+import { TransitionLink } from '@/src/components/TransitionLink'
 
 export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)

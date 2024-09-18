@@ -26,15 +26,21 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     e.preventDefault()
-    const body = document.querySelector('body')
+    const pagesContent = document.querySelector('.pagesContent')
 
-    body?.classList.add('page-transition')
+    // Applique la classe fade-in pour la transition
+    pagesContent?.classList.add('fade-in')
+    pagesContent?.classList.remove('show')
 
-    await sleep(400)
+    // Attendez la fin de l'animation de disparition
+    await sleep(200)
+
+    // Changez de route
     router.push(href)
-    await sleep(400)
+    await sleep(200) // Attendre après la navigation
 
-    body?.classList.remove('page-transition')
+    // Réapplique la classe show pour déclencher le fade-in
+    pagesContent?.classList.add('show')
   }
 
   return (

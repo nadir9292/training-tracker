@@ -5,12 +5,12 @@ export function middleware(req: NextRequest) {
   const token = req.cookies.get('jwtToken')
 
   if (!token) {
-    return NextResponse.redirect(new URL('/login', req.url))
+    return NextResponse.redirect(new URL('/welcome', req.url))
   }
 
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/protected-route/:path*', '/another-protected-page'],
+  matcher: ['/'],
 }

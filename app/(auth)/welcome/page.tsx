@@ -5,7 +5,7 @@ type Props = {}
 export default function page({}: Props) {
   return (
     <>
-      <h1>REGISTER</h1>
+      <h1>WELCOME</h1>
     </>
   )
 }

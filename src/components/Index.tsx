@@ -1,6 +1,6 @@
 'use client'
 
-import Typewriter from '@/components/Typewriter'
+import Typewriter from '@/src/components/Typewriter'
 import React, { useEffect, useState } from 'react'
 
 type Props = {}

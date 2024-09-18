@@ -13,16 +13,15 @@ body {
   overflow: auto;
   scroll-behavior: smooth;
   height: 100vh;
-  transition-property: opacity, transform, filter;
-  transition-timing-function: ease-in-out;
-  transition-duration: 400ms;
 }
 
-.page-transition {
+.fade-in {
   opacity: 0;
-  transform: translateX(40px);
-  filter: blur(12px);
-  transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.fade-in.show {
+  opacity: 1;
 }
 
 input:-webkit-autofill,

@@ -1,4 +1,4 @@
-import Index from '@/components/Index'
+import Index from '@/src/components/Index'
 
 const Home = () => {
   return (

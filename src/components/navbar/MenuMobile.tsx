@@ -3,8 +3,8 @@ import {
   HomeIcon,
   LogOutIcon,
   SettingsIcon,
-} from '@/components/SvgRessource'
-import { TransitionLink } from '@/components/TransitionLink'
+} from '@/src/components/SvgRessource'
+import { TransitionLink } from '@/src/components/TransitionLink'
 import { animated, useSpring, useTrail } from '@react-spring/web'
 import React, { useEffect } from 'react'
 
