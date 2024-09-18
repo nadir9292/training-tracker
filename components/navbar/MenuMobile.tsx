@@ -4,8 +4,8 @@ import {
   LogOutIcon,
   SettingsIcon,
 } from '@/components/SvgRessource'
+import { TransitionLink } from '@/components/TransitionLink'
 import { animated, useSpring, useTrail } from '@react-spring/web'
-import Link from 'next/link'
 import React, { useEffect } from 'react'
 
 type Props = { isOpen: boolean }
@@ -48,12 +48,12 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
         <div className="grid grid-cols-1 text-3xl text-gray-900 font-bold p-6 h-80">
           {trails.map((props, index) => (
             <animated.div style={{ ...props }} key={index}>
-              <Link href="/" className="flex items-center">
+              <TransitionLink href="/" className="flex items-center">
                 {ListLinks[index].icon}
                 <span className="ml-2">
                   {' - '} {ListLinks[index].name}
                 </span>
-              </Link>
+              </TransitionLink>
             </animated.div>
           ))}
         </div>

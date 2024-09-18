@@ -1,4 +1,3 @@
-import PageTransition from '@/components/PageTransition'
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
 import NavBar from '@/components/navbar/NavBar'
@@ -56,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <PageTransition>{children}</PageTransition>
+        {children}
         <NavBar />
       </body>
     </html>

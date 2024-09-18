@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { animated, useSpring } from '@react-spring/web'
@@ -12,6 +11,7 @@ import {
   ChartIcon,
   ChevronIcon,
 } from '@/components/SvgRessource'
+import { TransitionLink } from '@/components/TransitionLink'
 
 export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)
@@ -75,23 +75,23 @@ export default function NavBar() {
           />
           <div className="navbar mx-auto max-w-screen-xl px-6 py-3">
             <div className="grid grid-cols-5 gap-4">
-              <Link
+              <TransitionLink
                 href="/login"
                 onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <AddIcon height={42} width={42} />
                 <span>Training</span>
-              </Link>
+              </TransitionLink>
 
-              <Link
+              <TransitionLink
                 href="/"
                 onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <BoardIcon height={42} width={42} />
                 <span>Program</span>
-              </Link>
+              </TransitionLink>
 
               <div className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900">
                 <animated.div style={{ ...springs }}>
@@ -101,16 +101,16 @@ export default function NavBar() {
                 </animated.div>
               </div>
 
-              <Link
+              <TransitionLink
                 href="/"
                 onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <ChartIcon height={42} width={42} />
                 <span>Stats</span>
-              </Link>
+              </TransitionLink>
 
-              <Link
+              <TransitionLink
                 href="/"
                 onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
@@ -124,7 +124,7 @@ export default function NavBar() {
                   className="rounded-full border-2 border-gray-800"
                 />
                 <span>Nadir</span>
-              </Link>
+              </TransitionLink>
             </div>
           </div>
           <MenuMobile isOpen={isOpenMenu} />
