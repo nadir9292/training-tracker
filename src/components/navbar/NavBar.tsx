@@ -19,6 +19,7 @@ export default function NavBar() {
   const [mounted, setMounted] = useState(false)
   const [isOpenMenu, setIsOpenMenu] = useState(false)
   const { data: session } = useSession()
+  const firstName = session?.user?.name?.split(' ')[0] || 'default'
 
   const [springs, api] = useSpring(() => ({
     from: {
@@ -125,7 +126,7 @@ export default function NavBar() {
                   priority
                   className="rounded-full border-2 border-gray-800"
                 />
-                <span>{session?.user?.name || 'default'}</span>
+                <span className="text-xs">{firstName}</span>
               </TransitionLink>
             </div>
           </div>
