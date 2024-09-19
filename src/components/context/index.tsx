@@ -5,7 +5,24 @@ import { createContext, useContext, useState } from 'react'
 const AppContext = createContext<any>(undefined)
 
 export const AppWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <AppContext.Provider value={{}}>{children}</AppContext.Provider>
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
+  const [isOpenMenuNavbar, setIsOpenMenuNavbar] = useState(false)
+
+  return (
+    <AppContext.Provider
+      value={{
+        isError,
+        isLoading,
+        isOpenMenuNavbar,
+        setIsError,
+        setIsLoading,
+        setIsOpenMenuNavbar,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  )
 }
 
 export const useAppContext = () => {

@@ -13,11 +13,13 @@ import {
 } from '@/src/components/SvgRessource'
 import { TransitionLink } from '@/src/components/TransitionLink'
 import { useSession } from 'next-auth/react'
+import { useAppContext } from '@/src/components/context'
 
 export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
-  const [isOpenMenu, setIsOpenMenu] = useState(false)
+  const { isOpenMenuNavbar, setIsOpenMenuNavbar } = useAppContext()
+
   const { data: session } = useSession()
   const firstName = session?.user?.name?.split(' ')[0] || 'default'
 
@@ -31,16 +33,16 @@ export default function NavBar() {
 
   useEffect(() => {
     api.start({
-      rotate: isOpenMenu ? 0 : 180,
-      scale: isOpenMenu ? 1.5 : 1,
-      y: isOpenMenu ? -20 : 0,
+      rotate: isOpenMenuNavbar ? 0 : 180,
+      scale: isOpenMenuNavbar ? 1.5 : 1,
+      y: isOpenMenuNavbar ? -20 : 0,
       config: {
         mass: 1.5,
         tension: 120,
         friction: 14,
       },
     })
-  }, [isOpenMenu, api])
+  }, [isOpenMenuNavbar, api])
 
   useEffect(() => {
     setMounted(true)
@@ -80,7 +82,6 @@ export default function NavBar() {
             <div className="grid grid-cols-5 gap-4">
               <TransitionLink
                 href="/add-training"
-                onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <AddIcon height={42} width={42} />
@@ -89,7 +90,6 @@ export default function NavBar() {
 
               <TransitionLink
                 href="/board-training"
-                onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <BoardIcon height={42} width={42} />
@@ -98,7 +98,9 @@ export default function NavBar() {
 
               <div className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900">
                 <animated.div style={{ ...springs }}>
-                  <button onClick={() => setIsOpenMenu(!isOpenMenu)}>
+                  <button
+                    onClick={() => setIsOpenMenuNavbar(!isOpenMenuNavbar)}
+                  >
                     <ChevronIcon height={52} width={52} />
                   </button>
                 </animated.div>
@@ -106,7 +108,6 @@ export default function NavBar() {
 
               <TransitionLink
                 href="/chart-training"
-                onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <ChartIcon height={42} width={42} />
@@ -115,7 +116,6 @@ export default function NavBar() {
 
               <TransitionLink
                 href="/profile"
-                onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <Image
@@ -130,7 +130,7 @@ export default function NavBar() {
               </TransitionLink>
             </div>
           </div>
-          <MenuMobile isOpen={isOpenMenu} />
+          <MenuMobile isOpen={isOpenMenuNavbar} />
         </div>
       )}
     </div>
