@@ -13,7 +13,9 @@ const protectedRoutes = [
 const authRestrictedRoutes = ['/welcome', '/register']
 
 export function middleware(request: NextRequest) {
-  const token = request.cookies.get('authjs.session-token')?.value
+  const token =
+    request.cookies.get('authjs.session-token')?.value ||
+    request.cookies.get('__Secure-authjs.session-token')?.value
 
   if (token && authRestrictedRoutes.includes(request.nextUrl.pathname)) {
     const url = new URL('/', request.url)
