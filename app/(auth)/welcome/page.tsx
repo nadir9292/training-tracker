@@ -13,7 +13,7 @@ export default function page() {
   return (
     <div className="grid grid-cols-1 place-items-center gap-4 mt-[10vh]">
       <h1 className="text-center font-montserrat text-offWhite -mb-4 text-2xl font-extrabold text-shadow-sm shadow-gray-900/50">
-        WELCOME to
+        WELCOME to {process.env.AUTH_URL}
       </h1>
       <h1 className="text-center font-bowlbyOne text-offWhite text-4xl font-extrabold text-shadow-sm shadow-gray-900/50">
         TRAINING<span className="font-orbitron text-3xl italic">.tracker</span>
