@@ -4,7 +4,8 @@ import type { NextRequest } from 'next/server'
 const protectedRoutes = [
   '/',
   '/profile',
-  '/settings',
+  '/parameters',
+  '/about',
   '/add-training',
   '/board-training',
   '/stats-training',

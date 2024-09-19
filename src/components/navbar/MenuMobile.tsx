@@ -49,7 +49,10 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
         <div className="grid grid-cols-1 text-3xl text-gray-900 font-bold p-6 h-96">
           {trails.map((props, index) => (
             <animated.div style={{ ...props }} key={index}>
-              <TransitionLink href="/" className="flex items-center">
+              <TransitionLink
+                href={ListLinks[index].url}
+                className="flex items-center"
+              >
                 {ListLinks[index].icon}
                 <span className="ml-2">
                   {' - '} {ListLinks[index].name}
@@ -68,7 +71,17 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
 }
 
 export const ListLinks = [
-  { id: 1, name: 'Home', icon: <HomeIcon height={50} width={50} /> },
-  { id: 2, name: 'Settings', icon: <SettingsIcon height={50} width={50} /> },
-  { id: 3, name: 'About', icon: <AboutIcon height={50} width={50} /> },
+  { id: 1, url: '/', name: 'Home', icon: <HomeIcon height={50} width={50} /> },
+  {
+    id: 2,
+    url: '/parameters',
+    name: 'Settings',
+    icon: <SettingsIcon height={50} width={50} />,
+  },
+  {
+    id: 3,
+    url: '/about',
+    name: 'About',
+    icon: <AboutIcon height={50} width={50} />,
+  },
 ]
