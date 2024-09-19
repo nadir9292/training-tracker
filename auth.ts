@@ -4,4 +4,9 @@ import Twitter from 'next-auth/providers/twitter'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google, Twitter],
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      return baseUrl
+    },
+  },
 })
