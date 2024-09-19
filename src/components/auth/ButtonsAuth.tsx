@@ -8,7 +8,7 @@ const ButtonAuth = ({ provider, logoProvider }: Readonly<Props>) => {
     <form
       action={async () => {
         'use server'
-        await signIn(provider, { redirectTo: process.env.NEXT_PUBLIC_BASE_URL })
+        await signIn(provider, { redirectTo: '/' })
       }}
     >
       <button type="submit" className="flex items-center hover:scale-105">
