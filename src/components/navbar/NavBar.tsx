@@ -125,7 +125,7 @@ export default function NavBar() {
                   priority
                   className="rounded-full border-2 border-gray-800"
                 />
-                <span>Nadir</span>
+                <span>{session?.user?.name || 'default'}</span>
               </TransitionLink>
             </div>
           </div>
