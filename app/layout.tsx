@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata, Viewport } from 'next'
 import NavBar from '@/src/components/navbar/NavBar'
 import { AppWrapper } from '@/src/components/context'
+import { SessionProvider } from 'next-auth/react'
 
 const APP_NAME = 'Training Tracker'
 const APP_DEFAULT_TITLE = 'Training Tracker'
@@ -56,10 +57,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppWrapper>
-          <div className="pagesContent"> {children}</div>
-          <NavBar />
-        </AppWrapper>
+        <SessionProvider>
+          <AppWrapper>
+            <div className="pagesContent"> {children}</div>
+            <NavBar />
+          </AppWrapper>
+        </SessionProvider>
       </body>
     </html>
   )

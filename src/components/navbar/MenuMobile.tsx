@@ -7,12 +7,13 @@ import {
 import { TransitionLink } from '@/src/components/TransitionLink'
 import { animated, useSpring, useTrail } from '@react-spring/web'
 import React, { useEffect } from 'react'
+import { signOut } from 'next-auth/react'
 
 type Props = { isOpen: boolean }
 
 export default function MenuMobile({ isOpen }: Readonly<Props>) {
   const [props, apiDiv] = useSpring(() => ({}), [])
-  const [trails, api] = useTrail(4, () => ({}), [])
+  const [trails, api] = useTrail(3, () => ({}), [])
 
   useEffect(() => {
     apiDiv.start({
@@ -45,7 +46,7 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
           ...props,
         }}
       >
-        <div className="grid grid-cols-1 text-3xl text-gray-900 font-bold p-6 h-80">
+        <div className="grid grid-cols-1 text-3xl text-gray-900 font-bold p-6 h-96">
           {trails.map((props, index) => (
             <animated.div style={{ ...props }} key={index}>
               <TransitionLink href="/" className="flex items-center">
@@ -56,6 +57,10 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
               </TransitionLink>
             </animated.div>
           ))}
+          <button className="flex items-center -mt-8" onClick={() => signOut()}>
+            <LogOutIcon height={50} width={50} />
+            <span className="ml-2">{' - '}Log out</span>
+          </button>
         </div>
       </animated.div>
     </div>
@@ -66,5 +71,4 @@ export const ListLinks = [
   { id: 1, name: 'Home', icon: <HomeIcon height={50} width={50} /> },
   { id: 2, name: 'Settings', icon: <SettingsIcon height={50} width={50} /> },
   { id: 3, name: 'About', icon: <AboutIcon height={50} width={50} /> },
-  { id: 4, name: 'Log out', icon: <LogOutIcon height={50} width={50} /> },
 ]

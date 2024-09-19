@@ -12,11 +12,13 @@ import {
   ChevronIcon,
 } from '@/src/components/SvgRessource'
 import { TransitionLink } from '@/src/components/TransitionLink'
+import { useSession } from 'next-auth/react'
 
 export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
   const [isOpenMenu, setIsOpenMenu] = useState(false)
+  const { data: session } = useSession()
 
   const [springs, api] = useSpring(() => ({
     from: {
@@ -48,7 +50,7 @@ export default function NavBar() {
     return () => window.removeEventListener('resize', handleWindowResize)
   }, [])
 
-  if (!mounted) {
+  if (!mounted || !session) {
     return null
   }
 
@@ -76,7 +78,7 @@ export default function NavBar() {
           <div className="navbar mx-auto max-w-screen-xl px-6 py-3">
             <div className="grid grid-cols-5 gap-4">
               <TransitionLink
-                href="/login"
+                href="/add-training"
                 onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
@@ -85,7 +87,7 @@ export default function NavBar() {
               </TransitionLink>
 
               <TransitionLink
-                href="/"
+                href="/board-training"
                 onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
@@ -102,7 +104,7 @@ export default function NavBar() {
               </div>
 
               <TransitionLink
-                href="/"
+                href="/chart-training"
                 onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
@@ -111,12 +113,12 @@ export default function NavBar() {
               </TransitionLink>
 
               <TransitionLink
-                href="/"
+                href="/profile"
                 onClick={() => setIsOpenMenu(false)}
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
                 <Image
-                  src="/avatar_default.png"
+                  src={session?.user?.image || '/avatar_default.png'}
                   alt="avatar"
                   width={42}
                   height={42}

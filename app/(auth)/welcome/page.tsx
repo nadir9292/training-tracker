@@ -7,8 +7,6 @@ import React from 'react'
 const providers = [
   new Provider('google', '/logo_auth/google.png'),
   new Provider('twitter', '/logo_auth/twitter.png'),
-  new Provider('apple', '/logo_auth/apple.png'),
-  new Provider('facebook', '/logo_auth/facebook.png'),
 ]
 
 export default function page() {
@@ -20,9 +18,8 @@ export default function page() {
       <h1 className="text-center font-bowlbyOne text-offWhite text-4xl font-extrabold text-shadow-sm shadow-gray-900/50">
         TRAINING<span className="font-orbitron text-3xl italic">.tracker</span>
       </h1>
-
       <SignInForm />
-      <div className="grid grid-cols-4 gap-2 mx-2">
+      <div className="grid grid-cols-2 gap-2 mx-2">
         {providers.map((provider) => (
           <ButtonAuth provider={provider.name} logoProvider={provider.logo} />
         ))}

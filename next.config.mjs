@@ -5,5 +5,7 @@ const withPWA = withPWAInit({
 })
 
 export default withPWA({
-  // Your Next.js config
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
 })

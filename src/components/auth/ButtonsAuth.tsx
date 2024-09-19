@@ -12,7 +12,7 @@ const ButtonAuth = ({ provider, logoProvider }: Readonly<Props>) => {
       }}
     >
       <button type="submit" className="flex items-center hover:scale-105">
-        <Image src={logoProvider} height={50} width={50} alt="provider logo" />
+        <Image src={logoProvider} height={60} width={60} alt="provider logo" />
       </button>
     </form>
   )
