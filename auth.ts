@@ -1,9 +1,11 @@
 import NextAuth from 'next-auth'
 import Google from 'next-auth/providers/google'
 import { db, admin } from '@/lib/firebaseAdmin'
+import Discord from 'next-auth/providers/discord'
+import Github from 'next-auth/providers/github'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  providers: [Google],
+  providers: [Google, Discord, Github],
   pages: {
     signIn: '/welcome',
   },

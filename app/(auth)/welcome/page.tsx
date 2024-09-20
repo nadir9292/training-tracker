@@ -4,7 +4,11 @@ import { Provider } from '@/types/provider'
 import Link from 'next/link'
 import React from 'react'
 
-const providers = [new Provider('google', '/logo_auth/google.png')]
+const providers = [
+  new Provider('google', '/logo_auth/google.png'),
+  new Provider('discord', '/logo_auth/discord.png'),
+  new Provider('github', '/logo_auth/github.png'),
+]
 
 export default function page() {
   return (
@@ -16,7 +20,7 @@ export default function page() {
         TRAINING<span className="font-orbitron text-3xl italic">.tracker</span>
       </h1>
       <SignInForm />
-      <div className="grid grid-cols-2 gap-2 mx-2">
+      <div className="grid grid-cols-3 gap-2 mx-2">
         {providers.map((provider) => (
           <ButtonAuth provider={provider.name} logoProvider={provider.logo} />
         ))}
