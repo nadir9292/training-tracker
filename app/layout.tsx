@@ -3,7 +3,6 @@ import type { Metadata, Viewport } from 'next'
 import NavBar from '@/src/components/navbar/NavBar'
 import { AppWrapper } from '@/src/components/context'
 import { SessionProvider } from 'next-auth/react'
-
 const APP_NAME = 'Training Tracker'
 const APP_DEFAULT_TITLE = 'Training Tracker'
 const APP_TITLE_TEMPLATE = '%s - Training Tracker'
@@ -17,12 +16,6 @@ export const metadata: Metadata = {
   },
   description: APP_DESCRIPTION,
   manifest: '/manifest.ts',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: APP_DEFAULT_TITLE,
-    // startUpImage: [],
-  },
   formatDetection: {
     telephone: false,
   },
