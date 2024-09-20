@@ -12,7 +12,7 @@ export default function Loading({ isLoading }: Props) {
 
   return (
     <div
-      className="fixed inset-0 grid grid-cols-1 place-content-center justify-center backdrop-blur-xl"
+      className="inset-0 mt-[50vw] grid grid-cols-1 place-content-center justify-center backdrop-blur-xl"
       style={{ zIndex: 100 }}
     >
       <Image
