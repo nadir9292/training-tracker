@@ -4,10 +4,7 @@ import { Provider } from '@/src/types/provider'
 import Link from 'next/link'
 import React from 'react'
 
-const providers = [
-  new Provider('google', '/logo_auth/google.png'),
-  new Provider('twitter', '/logo_auth/twitter.png'),
-]
+const providers = [new Provider('google', '/logo_auth/google.png')]
 
 export default function page() {
   return (
