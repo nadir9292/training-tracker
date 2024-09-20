@@ -1,21 +1,21 @@
 'use client'
 
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const AppContext = createContext<any>(undefined)
 
 export const AppWrapper = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
+  const [error, setError] = useState(false)
   const [isOpenMenuNavbar, setIsOpenMenuNavbar] = useState(false)
 
   return (
     <AppContext.Provider
       value={{
-        isError,
+        error,
         isLoading,
         isOpenMenuNavbar,
-        setIsError,
+        setError,
         setIsLoading,
         setIsOpenMenuNavbar,
       }}
