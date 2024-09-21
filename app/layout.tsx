@@ -4,6 +4,7 @@ import NavBar from '@/src/components/navbar/NavBar'
 import { AppWrapper } from '@/src/components/context'
 import { SessionProvider } from 'next-auth/react'
 import Head from 'next/head'
+import { Analytics } from '@vercel/analytics/react'
 
 const APP_NAME = 'Training Tracker'
 const APP_DEFAULT_TITLE = 'Training Tracker'
@@ -56,7 +57,9 @@ export default function RootLayout({
       <body>
         <SessionProvider>
           <AppWrapper>
-            <div className="pagesContent"> {children}</div>
+            <div className="pagesContent">
+              {children} <Analytics />
+            </div>
             <NavBar />
           </AppWrapper>
         </SessionProvider>
