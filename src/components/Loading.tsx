@@ -12,20 +12,22 @@ export default function Loading({ isLoading }: Props) {
 
   return (
     <div
-      className="inset-0 mt-[50vw] grid grid-cols-1 place-content-center justify-center backdrop-blur-xl"
+      className="absolute inset-0 flex justify-center items-center"
       style={{ zIndex: 100 }}
     >
-      <Image
-        className="animate-spin mx-auto"
-        src="/loading_logo.png"
-        alt="loading image"
-        width={150}
-        height={150}
-        priority
-      />
-      <h1 className="text-center mt-6 font-happyMonkey text-3xl animate-pulse">
-        Loading...
-      </h1>
+      <div className="text-center">
+        <Image
+          className="animate-spin mx-auto"
+          src="/loading_logo.png"
+          alt="loading image"
+          width={150}
+          height={150}
+          priority
+        />
+        <h1 className="mt-6 font-happyMonkey text-3xl animate-pulse">
+          Loading...
+        </h1>
+      </div>
     </div>
   )
 }

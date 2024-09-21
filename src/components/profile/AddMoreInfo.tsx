@@ -11,7 +11,7 @@ const AddMoreInfo = ({ isOpen, toggleModal }: Props) => {
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center h-screen backdrop-blur-xl"
+      className="fixed inset-0 flex justify-center items-center backdrop-blur-xl"
       style={{ zIndex: 100 }}
     >
       <div className="w-[90vw] md:w-150 grid grid-cols-1 gap-2 place-content-center px-4 py-8 bg-offWhite rounded-2xl shadow-xl">

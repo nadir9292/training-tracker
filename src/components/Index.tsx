@@ -7,9 +7,7 @@ import Typewriter from '@/src/components/Typewriter'
 import { useSession } from 'next-auth/react'
 import React, { useEffect, useState } from 'react'
 
-type Props = {}
-
-export default function Index({}: Props) {
+export default function Index() {
   const { userContext, setUserContext } = useAppContext()
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
@@ -37,6 +35,7 @@ export default function Index({}: Props) {
           setIsOpenFormProfile(true)
           // ---- FINISH COMPLETE PROFILE AND VALIDATION FORM ------------
         }
+        localStorage.setItem('userData', JSON.stringify(result.data[0]))
         setUserContext(result.data[0])
       } catch (err: unknown) {
         if (err instanceof Error) {

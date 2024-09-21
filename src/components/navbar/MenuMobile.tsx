@@ -1,6 +1,5 @@
 import {
   AboutIcon,
-  HomeIcon,
   LogOutIcon,
   SettingsIcon,
 } from '@/src/components/SvgRessource'
@@ -14,6 +13,11 @@ type Props = { isOpen: boolean }
 export default function MenuMobile({ isOpen }: Readonly<Props>) {
   const [props, apiDiv] = useSpring(() => ({}), [])
   const [trails, api] = useTrail(3, () => ({}), [])
+
+  const logOut = () => {
+    window.localStorage.removeItem('userData')
+    signOut()
+  }
 
   useEffect(() => {
     apiDiv.start({
@@ -29,9 +33,11 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
         tension: 170,
         friction: 26,
         mass: 1,
+        duration: 100,
       },
       opacity: isOpen ? 1 : 0,
-      height: isOpen ? 50 : 0,
+      scale: isOpen ? 1 : 1.3,
+      y: isOpen ? 1 : 300,
     })
   }, [isOpen, api])
 
@@ -42,28 +48,33 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
       <animated.div
         style={{
           backgroundColor: '#FAF9F6',
-          borderRadius: '80px 80px 0px 0px',
+          borderRadius: '100px 100px 0px 0px',
           ...props,
         }}
       >
-        <div className="grid grid-cols-1 text-3xl text-gray-900 font-bold p-6 h-96">
+        <div className="grid grid-cols-1 text-3xl text-gray-900 font-bold p-10 h-96">
           {trails.map((props, index) => (
             <animated.div style={{ ...props }} key={index}>
-              <TransitionLink
-                href={ListLinks[index].url}
-                className="flex items-center"
-              >
-                {ListLinks[index].icon}
-                <span className="ml-2">
-                  {' - '} {ListLinks[index].name}
-                </span>
-              </TransitionLink>
+              {ListLinks[index].url ? (
+                <TransitionLink
+                  href={ListLinks[index].url}
+                  className="flex items-center text-center"
+                >
+                  {ListLinks[index].icon}
+                  <span className="ml-2">
+                    {' - '} {ListLinks[index].name}
+                  </span>
+                </TransitionLink>
+              ) : (
+                <div>
+                  <button className="flex items-center" onClick={logOut}>
+                    <LogOutIcon height={50} width={50} />
+                    <span className="ml-2">{' - '}Log out</span>
+                  </button>
+                </div>
+              )}
             </animated.div>
           ))}
-          <button className="flex items-center -mt-8" onClick={() => signOut()}>
-            <LogOutIcon height={50} width={50} />
-            <span className="ml-2">{' - '}Log out</span>
-          </button>
         </div>
       </animated.div>
     </div>
@@ -71,7 +82,12 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
 }
 
 export const ListLinks = [
-  { id: 1, url: '/', name: 'Home', icon: <HomeIcon height={50} width={50} /> },
+  {
+    id: 1,
+    url: '/about',
+    name: 'About',
+    icon: <AboutIcon height={50} width={50} />,
+  },
   {
     id: 2,
     url: '/parameters',
@@ -80,8 +96,8 @@ export const ListLinks = [
   },
   {
     id: 3,
-    url: '/about',
-    name: 'About',
-    icon: <AboutIcon height={50} width={50} />,
+    url: null,
+    name: 'Log out',
+    icon: <LogOutIcon height={50} width={50} />,
   },
 ]

@@ -10,18 +10,25 @@ import {
   BoardIcon,
   ChartIcon,
   ChevronIcon,
+  HomeIcon,
 } from '@/src/components/SvgRessource'
 import { TransitionLink } from '@/src/components/TransitionLink'
 import { useSession } from 'next-auth/react'
 import { useAppContext } from '@/src/components/context'
+import { UserData } from '@/types/user'
 
 export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)
   const [mounted, setMounted] = useState(false)
+  const [user, setUser] = useState<UserData>()
   const { isOpenMenuNavbar, setIsOpenMenuNavbar } = useAppContext()
-
   const { data: session } = useSession()
-  const firstName = session?.user?.name?.split(' ')[0] || 'default'
+
+  useEffect(() => {
+    setUser(JSON.parse(window.localStorage.getItem('userData') || '{}'))
+  }, [])
+
+  const firstName = user?.pseudo?.split(' ').slice(0, 1) || 'default'
 
   const [springs, api] = useSpring(() => ({
     from: {
@@ -81,11 +88,11 @@ export default function NavBar() {
           <div className="navbar mx-auto max-w-screen-xl px-6 py-3">
             <div className="grid grid-cols-5 gap-4">
               <TransitionLink
-                href="/add-training"
+                href="/"
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
-                <AddIcon height={42} width={42} />
-                <span>Training</span>
+                <HomeIcon height={42} width={42} />
+                <span>Home</span>
               </TransitionLink>
 
               <TransitionLink
