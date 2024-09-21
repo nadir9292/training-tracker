@@ -1,11 +1,15 @@
+import { useAppContext } from '@/src/components/context'
+import Popup from '@/src/components/Popup'
 import { AlertIcon } from '@/src/components/SvgRessource'
-import { UserData } from '@/types/user'
+import { UserData } from '@/src/types/user'
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 
 type Props = { closeModal: any; isModal: boolean; userFormData: UserData }
 
 const FormProfile = ({ closeModal, isModal, userFormData }: Props) => {
   const [userFormDataLocal, setUserFormDataLocal] = useState<UserData>()
+  const [msgPopup, setMsgPopup] = useState<string>()
+  const { error, setError, setIsOpenPopup } = useAppContext()
 
   useEffect(() => {
     setUserFormDataLocal(userFormData)
@@ -53,10 +57,20 @@ const FormProfile = ({ closeModal, isModal, userFormData }: Props) => {
 
         const { data } = await response.json()
         if (data) {
-          isModal ? closeModal() : console.log('profile updated : ', data)
+          setMsgPopup('Youre profile has been updated!')
+          setIsOpenPopup(true)
+          setTimeout(() => {
+            setIsOpenPopup(false)
+            isModal ? closeModal() : null
+          }, 2000)
         }
       } catch (error) {
-        console.error('Error:', error)
+        setMsgPopup('Error : ')
+        setError(true)
+        setIsOpenPopup(true)
+        setTimeout(() => {
+          isModal ? closeModal() && setIsOpenPopup(false) : null
+        }, 3000)
       }
     } else {
       console.error('Missing required fields')
@@ -65,6 +79,7 @@ const FormProfile = ({ closeModal, isModal, userFormData }: Props) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <Popup isError={error} msg={msgPopup || ''} />
       <div className="mb-4 font-happyMonkey text-lg">
         {isModal ? (
           <div className="flex items-center w-fit mx-auto">
@@ -147,7 +162,7 @@ const FormProfile = ({ closeModal, isModal, userFormData }: Props) => {
       </div>
       <button
         type="submit"
-        className="w-full shadow-xl mt-4 hover:scale-105 hover:border-gray-900 hover:bg-purple-400 bg-periwinkle font-montserrat font-extrabold text-2xl border-2 py-4 px-4 rounded-xl"
+        className="w-full shadow-xl mt-4 hover:border-gray-900 hover:bg-purple-400 bg-periwinkle font-montserrat font-extrabold text-2xl border-2 py-4 px-4 rounded-xl"
       >
         {isModal ? 'Confirm' : 'Update your profile'}
       </button>

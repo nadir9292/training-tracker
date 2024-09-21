@@ -1,5 +1,5 @@
-import { db } from '@/lib/firebaseAdmin'
-import { UserData } from '@/types/user'
+import { db } from '@/src/lib/firebaseAdmin'
+import { UserData } from '@/src/types/user'
 import { NextRequest, NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'

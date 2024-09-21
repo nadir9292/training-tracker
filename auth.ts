@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth'
 import Google from 'next-auth/providers/google'
-import { db, admin } from '@/lib/firebaseAdmin'
+import { db, admin } from '@/src/lib/firebaseAdmin'
 import Discord from 'next-auth/providers/discord'
 import Github from 'next-auth/providers/github'
 

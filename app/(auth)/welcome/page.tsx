@@ -1,6 +1,6 @@
 import ButtonAuth from '@/src/components/auth/ButtonsAuth'
 import SignInForm from '@/src/components/auth/SignInForm'
-import { Provider } from '@/types/provider'
+import { Provider } from '@/src/types/provider'
 import Link from 'next/link'
 import React from 'react'
 

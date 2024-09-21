@@ -15,7 +15,7 @@ import {
 import { TransitionLink } from '@/src/components/TransitionLink'
 import { useSession } from 'next-auth/react'
 import { useAppContext } from '@/src/components/context'
-import { UserData } from '@/types/user'
+import { UserData } from '@/src/types/user'
 
 export default function NavBar() {
   const [windowWidth, setWindowWidth] = useState(0)

@@ -51,6 +51,8 @@ const config: Config = {
         slateBlue: '#8357DBff',
         lightYellow: '#FDFD96',
         offWhite: '#FAF9F6',
+        emerald: '#28A745',
+        coralRed: '#E63946',
       },
       fontSize: {
         xs: '0.6rem',

@@ -1,4 +1,4 @@
-import { db } from '@/lib/firebaseAdmin'
+import { db } from '@/src/lib/firebaseAdmin'
 import { NextRequest, NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'

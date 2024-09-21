@@ -3,7 +3,7 @@
 import { useAppContext } from '@/src/components/context'
 import Loading from '@/src/components/Loading'
 import FormProfile from '@/src/components/profile/FormProfile'
-import { UserData } from '@/types/user'
+import { UserData } from '@/src/types/user'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
