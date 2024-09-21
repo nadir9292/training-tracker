@@ -2,6 +2,7 @@
 
 import { useAppContext } from '@/src/components/context'
 import Loading from '@/src/components/Loading'
+import FormProfile from '@/src/components/profile/FormProfile'
 import { UserData } from '@/types/user'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
@@ -48,7 +49,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="grid grid-1 gap-6 place-content-center mt-12 rounded-xl mx-2 py-4 bg-offWhite">
+    <div className="grid grid-1 gap-6 place-content-center mt-12 rounded-xl mx-2 py-4">
       <Image
         src={users[0]?.image || '/avatar_default.png'}
         alt="avatar"
@@ -57,19 +58,7 @@ const Profile = () => {
         priority
         className="rounded-full border-2 mx-auto border-gray-800"
       />
-      <h1 className="text-gray-900 text-center font-happyMonkey font-bold text-xl">
-        <span className="font-bold">ID :</span> {users[0]?.id}
-      </h1>
-      <h1 className="text-gray-900 text-center font-happyMonkey font-bold text-2xl">
-        {users[0]?.pseudo}
-      </h1>
-      <h1 className="text-gray-900 text-center font-happyMonkey font-bold text-2xl">
-        {users[0]?.email}
-      </h1>
-      <h1 className="text-gray-900 text-center font-happyMonkey text-xl">
-        <span className="font-bold">created at :</span>{' '}
-        {users[0]?.createdAt.toString()}
-      </h1>
+      <FormProfile isModal={false} closeModal={null} userFormData={users[0]} />
     </div>
   )
 }

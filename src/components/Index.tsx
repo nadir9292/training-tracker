@@ -74,6 +74,7 @@ export default function Index() {
       <AddMoreInfo
         isOpen={isOpenFormProfile}
         toggleModal={() => setIsOpenFormProfile(!isOpenFormProfile)}
+        userFormData={userContext}
       />
       <div className="py-4 w-80 md:w-192 mx-auto mt-4 md:mt-24">
         <h1 className="text-center font-passion text-offWhite text-6xl font-extrabold -mb-8 text-shadow-sm shadow-gray-900/50">

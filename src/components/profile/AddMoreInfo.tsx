@@ -1,10 +1,11 @@
 import FormProfile from '@/src/components/profile/FormProfile'
 import { CloseIcon } from '@/src/components/SvgRessource'
+import { UserData } from '@/types/user';
 import React from 'react'
 
-type Props = { isOpen: boolean; toggleModal: any }
+type Props = { isOpen: boolean; toggleModal: any, userFormData: UserData }
 
-const AddMoreInfo = ({ isOpen, toggleModal }: Props) => {
+const AddMoreInfo = ({ isOpen, toggleModal, userFormData }: Props) => {
   if (!isOpen) {
     return null
   }
@@ -21,7 +22,7 @@ const AddMoreInfo = ({ isOpen, toggleModal }: Props) => {
         >
           <CloseIcon width={20} height={20} />
         </button>
-        <FormProfile />
+        <FormProfile closeModal={toggleModal} isModal={true} userFormData={userFormData} />
       </div>
     </div>
   )

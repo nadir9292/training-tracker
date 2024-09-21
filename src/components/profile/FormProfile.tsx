@@ -1,99 +1,155 @@
-import { useAppContext } from '@/src/components/context'
 import { AlertIcon } from '@/src/components/SvgRessource'
-import React, { ChangeEvent, FormEvent } from 'react'
+import { UserData } from '@/types/user'
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 
-const FormProfile = () => {
-  const { userContext, setUserContext } = useAppContext()
+type Props = { closeModal: any; isModal: boolean; userFormData: UserData }
+
+const FormProfile = ({ closeModal, isModal, userFormData }: Props) => {
+  const [userFormDataLocal, setUserFormDataLocal] = useState<UserData>()
+
+  useEffect(() => {
+    setUserFormDataLocal(userFormData)
+  }, [userFormData])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setUserContext((prevuserContext: any) => ({
+
+    setUserFormDataLocal((prevuserContext: any) => ({
       ...prevuserContext,
       [name]: value,
     }))
   }
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const { pseudo, height, weight, gender, dateOfBirth } =
+      e.target as typeof e.target & {
+        pseudo: { value: string }
+        height: { value: string }
+        weight: { value: string }
+        gender: { value: string }
+        dateOfBirth: { value: string }
+      }
+
+    if (
+      pseudo.value &&
+      height.value &&
+      weight.value &&
+      gender.value &&
+      dateOfBirth.value
+    ) {
+      try {
+        const response = await fetch('/api/submit-profile', {
+          method: 'POST',
+          mode: 'cors',
+          body: JSON.stringify({
+            email: userFormData.email || null,
+            pseudo: pseudo.value,
+            height: height.value,
+            weight: weight.value,
+            gender: gender.value,
+            dateOfBirth: dateOfBirth.value,
+          }),
+        })
+
+        const { data } = await response.json()
+        if (data) {
+          isModal ? closeModal() : console.log('profile updated : ', data)
+        }
+      } catch (error) {
+        console.error('Error:', error)
+      }
+    } else {
+      console.error('Missing required fields')
+    }
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-4 font-happyMonkey text-lg">
-        <div className="flex items-center w-fit mx-auto">
-          <AlertIcon width={30} height={30} />
-          <span className="ml-2"> Please complete your profile :</span>
-        </div>
+        {isModal ? (
+          <div className="flex items-center w-fit mx-auto">
+            <AlertIcon width={30} height={30} />
+            <span className="ml-2"> Please complete your profile :</span>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="flex flex-row items-center">
-        <label className="basis-1/3 uppercase text-center font-happyMonkey font-bold mb-2">
+        <label className="basis-1/2 uppercase text-center font-happyMonkey font-bold mb-2">
           Pseudo
         </label>
         <input
-          className="font-gray-900 basis-2/3 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-10 w-full"
+          className="font-gray-900 basis-1/2 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-10 w-full"
           name="pseudo"
           type="text"
           placeholder="Pseudo"
-          value={userContext?.pseudo || ''}
+          required={true}
+          value={userFormDataLocal?.pseudo || ''}
           onChange={handleChange}
         />
       </div>
       <div className="flex flex-row items-center">
-        <label className="basis-1/3 uppercase text-center font-happyMonkey font-bold mb-2">
-          height
+        <label className="basis-1/2 uppercase text-center font-happyMonkey font-bold mb-2">
+          height (cm)
         </label>
         <input
-          className="font-gray-900 basis-2/3 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-10 w-full"
+          className="font-gray-900 basis-1/2 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-10 w-full"
           name="height"
           type="number"
           placeholder="Height (cm)"
-          value={userContext?.height || ''}
+          required={true}
+          value={userFormDataLocal?.height || ''}
           onChange={handleChange}
         />
       </div>
       <div className="flex flex-row items-center">
-        <label className="basis-1/3 uppercase text-center font-happyMonkey font-bold mb-2">
-          weight
+        <label className="basis-1/2 uppercase text-center font-happyMonkey font-bold mb-2">
+          weight (kg)
         </label>
         <input
-          className="font-gray-900 basis-2/3 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-10 w-full"
+          className="font-gray-900 basis-1/2 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-10 w-full"
           name="weight"
           type="number"
           placeholder="Weight (kg)"
-          value={userContext?.weight || ''}
+          required={true}
+          value={userFormDataLocal?.weight || ''}
           onChange={handleChange}
         />
       </div>
       <div className="flex flex-row items-center">
-        <label className="basis-1/3 uppercase text-center font-happyMonkey font-bold mb-2">
+        <label className="basis-1/2 uppercase text-center font-happyMonkey font-bold mb-2">
           gender
         </label>
         <input
-          className="font-gray-900 basis-2/3 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-10 w-full"
+          className="font-gray-900 basis-1/2 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-10 w-full"
           name="gender"
           type="text"
           placeholder="Gender"
-          value={userContext?.gender || ''}
+          required={true}
+          value={userFormDataLocal?.gender || ''}
           onChange={handleChange}
         />
       </div>
       <div className="flex flex-row items-center">
-        <label className="basis-1/3 uppercase text-center font-happyMonkey font-bold mb-2">
-          birthday
+        <label className="basis-1/2 uppercase text-center font-happyMonkey font-bold mb-2">
+          birthday (dd/mm/yyyy)
         </label>
         <input
-          className="font-gray-900 basis-2/3 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-10 w-full"
+          className="font-gray-900 basis-1/2 rounded-xl p-2 border-2 font-happyMonkey shadow-xl mb-2 h-10 w-full"
           name="dateOfBirth"
           type="text"
           placeholder="Date of birth (dd/mm/yyyy)"
-          value={userContext?.dateOfBirth || ''}
+          required={true}
+          value={userFormDataLocal?.dateOfBirth || ''}
           onChange={handleChange}
         />
       </div>
       <button
         type="submit"
-        className="w-full mx-auto shadow-xl mt-4 hover:scale-105 hover:border-gray-900 hover:bg-purple-400 bg-periwinkle font-montserrat font-extrabold text-2xl border-2 py-4 px-4 rounded-xl"
+        className="w-full shadow-xl mt-4 hover:scale-105 hover:border-gray-900 hover:bg-purple-400 bg-periwinkle font-montserrat font-extrabold text-2xl border-2 py-4 px-4 rounded-xl"
       >
-        Confirm
+        {isModal ? 'Confirm' : 'Update your profile'}
       </button>
     </form>
   )
