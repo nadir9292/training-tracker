@@ -5,11 +5,12 @@ import Loading from '@/src/components/Loading'
 import { UserData } from '@/types/user'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Profile = () => {
   const { data: session } = useSession()
   const { setError, setIsLoading, error } = useAppContext()
+  // --------ADD THIS IN COMPONENT-----------------
   const [users, setUsers] = useState<UserData[]>([])
 
   useEffect(() => {
@@ -40,6 +41,7 @@ const Profile = () => {
 
     fetchData()
   }, [session])
+  // --------ADD THIS IN COMPONENT-----------------
 
   if (!users[0]) {
     return <Loading isLoading={true} />

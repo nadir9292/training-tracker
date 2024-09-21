@@ -1,3 +1,5 @@
+type Gender = 'Male' | 'Female' | 'Other'
+
 export interface UserData {
   id: string
   pseudo: string
@@ -5,4 +7,7 @@ export interface UserData {
   createdAt: Date
   image: string
   height?: number
+  weight?: number
+  gender?: Gender
+  dateOfBirth?: string
 }

@@ -8,6 +8,7 @@ export const AppWrapper = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(false)
   const [isOpenMenuNavbar, setIsOpenMenuNavbar] = useState(false)
+  const [userContext, setUserContext] = useState(null)
 
   return (
     <AppContext.Provider
@@ -15,9 +16,11 @@ export const AppWrapper = ({ children }: { children: React.ReactNode }) => {
         error,
         isLoading,
         isOpenMenuNavbar,
+        userContext,
         setError,
         setIsLoading,
         setIsOpenMenuNavbar,
+        setUserContext,
       }}
     >
       {children}

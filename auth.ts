@@ -29,6 +29,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             pseudo: user.name,
             email: user.email,
             image: user.image,
+            height: null,
+            weight: null,
+            gender: null,
+            dateOfBirth: null,
             createdAt: admin.firestore.FieldValue.serverTimestamp(),
             lastLogin: admin.firestore.FieldValue.serverTimestamp(),
           })

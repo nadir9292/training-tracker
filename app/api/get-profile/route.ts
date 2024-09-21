@@ -25,6 +25,10 @@ export async function GET(req: NextRequest) {
             userData.createdAt._nanoseconds / 1000000
         ),
         image: userData.image,
+        height: userData.height,
+        weight: userData.weight,
+        gender: userData.gender,
+        dateOfBirth: userData.dateOfBirth,
       })
     })
 
