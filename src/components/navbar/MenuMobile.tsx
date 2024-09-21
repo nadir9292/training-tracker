@@ -33,7 +33,7 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
         tension: 170,
         friction: 26,
         mass: 1,
-        duration: 100,
+        duration: 250,
       },
       opacity: isOpen ? 1 : 0,
       scale: isOpen ? 1 : 1.3,

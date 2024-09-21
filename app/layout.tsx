@@ -16,6 +16,12 @@ export const metadata: Metadata = {
   },
   description: APP_DESCRIPTION,
   manifest: '/manifest.ts',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: APP_DEFAULT_TITLE,
+    startupImage: '/logo-512.png',
+  },
   formatDetection: {
     telephone: false,
   },
