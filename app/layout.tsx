@@ -12,7 +12,7 @@ const APP_TITLE_TEMPLATE = '%s - Training Tracker'
 const APP_DESCRIPTION = 'By Nadir Mansouri :)'
 
 export const viewport: Viewport = {
-  themeColor: '#AC9BEF',
+  themeColor: '##8286fd',
 }
 
 export const metadata = {
