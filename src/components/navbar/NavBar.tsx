@@ -125,14 +125,23 @@ export default function NavBar() {
                 href="/profile"
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
-                <Image
-                  src={session?.user?.image || '/avatar_default.png'}
-                  alt="avatar"
-                  width={42}
-                  height={42}
-                  priority
-                  className="rounded-full border-2 border-gray-800"
-                />
+                <div className="relative w-12 h-12">
+                  <div
+                    className="absolute inset-0 bg-no-repeat bg-center bg-contain"
+                    style={{
+                      backgroundImage: "url('/border-circle.png')",
+                      zIndex: 100,
+                    }}
+                  ></div>
+                  <Image
+                    src={session?.user?.image || '/avatar_default.png'}
+                    alt="avatar"
+                    width={45}
+                    height={45}
+                    priority
+                    className="rounded-full mt-[2px] ml-[2px]"
+                  />
+                </div>
                 <span className="text-xs">{firstName}</span>
               </TransitionLink>
             </div>

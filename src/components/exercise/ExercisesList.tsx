@@ -60,7 +60,7 @@ const ExercisesList = ({ exercises }: Props) => {
               height={70}
               priority
               alt="image exercises"
-              className={`bg-offWhite rounded-2xl shadow-xl flex-shrink-0 ${
+              className={`bg-offWhite rounded-xl shadow-xl flex-shrink-0 ${
                 selectedExercises.find((exo) => exo.id === exercises[index].id)
                   ? 'border-4 border-emerald scale-105'
                   : ''

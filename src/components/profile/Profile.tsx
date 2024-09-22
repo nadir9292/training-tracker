@@ -49,15 +49,27 @@ const Profile = () => {
   }
 
   return (
-    <div className="grid grid-1 gap-6 place-content-center mt-12 rounded-xl mx-2 py-4">
-      <Image
-        src={users[0]?.image || '/avatar_default.png'}
-        alt="avatar"
-        width={70}
-        height={70}
-        priority
-        className="rounded-full border-2 mx-auto border-gray-800"
-      />
+    <div className="grid grid-1 gap-2 place-content-center mt-12 rounded-xl mx-2">
+      <div className="relative w-32 h-32 mx-auto">
+        <div
+          className="absolute inset-0 bg-no-repeat bg-center bg-contain"
+          style={{
+            backgroundImage: "url('/border-circle.png')",
+            zIndex: 100,
+            width: '100%',
+            height: '100%',
+          }}
+        ></div>
+        <Image
+          src={session?.user?.image || '/avatar_default.png'}
+          alt="avatar"
+          width={120}
+          height={120}
+          priority
+          className="rounded-full object-cover ml-[3px] mt-[4px]"
+        />
+      </div>
+
       <FormProfile isModal={false} closeModal={null} userFormData={users[0]} />
     </div>
   )
