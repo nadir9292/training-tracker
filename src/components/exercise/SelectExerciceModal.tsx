@@ -1,7 +1,7 @@
 'use client'
 
 import { useAppContext } from '@/src/components/context'
-import ExercicesList from '@/src/components/exercise/ExercicesList'
+import ExercisesList from '@/src/components/exercise/ExercisesList'
 import Loading from '@/src/components/Loading'
 import { Exercise } from '@/src/types/exercise'
 import { useSession } from 'next-auth/react'
@@ -9,9 +9,9 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 
 type Props = {}
 
-const SelectExerciceModal = ({}: Props) => {
-  const [exercices, setExercice] = useState<Exercise[]>()
-  const [searchedExercices, setSearchedExercices] = useState<Exercise[]>()
+const SelectExerciseModal = ({}: Props) => {
+  const [exercises, setExercise] = useState<Exercise[]>()
+  const [searchedExercises, setSearchedExercises] = useState<Exercise[]>()
   const [query, setQuery] = useState('')
   const { setIsLoading, setError } = useAppContext()
 
@@ -20,16 +20,16 @@ const SelectExerciceModal = ({}: Props) => {
   }
 
   useEffect(() => {
-    if (exercices) {
-      const filtered = exercices.filter(
+    if (exercises) {
+      const filtered = exercises.filter(
         (exercise) =>
           exercise.title.toLowerCase().includes(query.toLowerCase()) ||
           exercise.type.toLowerCase().includes(query.toLowerCase()) ||
           exercise.targetedMuscles.toLowerCase().includes(query.toLowerCase())
       )
-      setSearchedExercices(filtered)
+      setSearchedExercises(filtered)
     }
-  }, [query, exercices])
+  }, [query, exercises])
 
   const { data: session } = useSession()
 
@@ -47,8 +47,8 @@ const SelectExerciceModal = ({}: Props) => {
         const result = await response.json()
 
         localStorage.setItem('userData', JSON.stringify(result.data[0]))
-        setExercice(result.data)
-        setSearchedExercices(result.data) // Initialise avec toutes les données
+        setExercise(result.data)
+        setSearchedExercises(result.data)
       } catch (err: unknown) {
         if (err instanceof Error) {
           setError(true)
@@ -63,7 +63,7 @@ const SelectExerciceModal = ({}: Props) => {
     fetchData()
   }, [session])
 
-  if (!exercices) {
+  if (!exercises) {
     return <Loading isLoading={true} />
   }
 
@@ -80,10 +80,10 @@ const SelectExerciceModal = ({}: Props) => {
             value={query}
           />
         </div>
-        <ExercicesList exercices={searchedExercices || []} />
+        <ExercisesList exercises={searchedExercises || []} />
       </div>
     </div>
   )
 }
 
-export default SelectExerciceModal
+export default SelectExerciseModal
