@@ -55,6 +55,7 @@ const config: Config = {
         coralRed: '#E63946',
       },
       fontSize: {
+        xxs: 'O.2rem',
         xs: '0.6rem',
         sm: '0.8rem',
         base: '1rem',

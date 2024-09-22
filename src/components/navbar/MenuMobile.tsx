@@ -33,7 +33,7 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
         tension: 170,
         friction: 26,
         mass: 1,
-        duration: 250,
+        duration: 200,
       },
       opacity: isOpen ? 1 : 0,
       scale: isOpen ? 1 : 1.3,
@@ -52,7 +52,7 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
           ...props,
         }}
       >
-        <div className="grid grid-cols-1 text-3xl text-gray-900 font-bold p-10 h-96">
+        <div className="grid grid-cols-1 text-2xl text-gray-900 font-bold p-10 h-96">
           {trails.map((props, index) => (
             <animated.div style={{ ...props }} key={index}>
               {ListLinks[index].url ? (
