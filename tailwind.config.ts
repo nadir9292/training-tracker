@@ -42,6 +42,7 @@ const config: Config = {
       backgroundImage: {
         normal: "url('/bg-normal.png')",
         mobile: "url('/bg-mobile.png')",
+        program: "url('/program-bg.jpeg')",
       },
       colors: {
         wisteria: '#BB9BECff',

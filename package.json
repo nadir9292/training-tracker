@@ -28,6 +28,7 @@
     "react-dom": "^18",
     "react-wavify": "^1.11.1",
     "styled-components": "^6.1.13",
+    "swiper": "^11.1.14",
     "three": "^0.168.0",
     "yup": "^1.4.0"
   },

@@ -48,7 +48,7 @@ const ExercisesList = ({ exercises }: Props) => {
             key={exercises[index].id}
             onClick={() => selectExercise(exercises[index].id)}
             className={`flex flex-row gap-2 items-center font-montserrat text-sm shadow-2xl
-               bg-offWhite h-14 w-[90vw] my-6 mx-auto rounded-xl ${
+               bg-offWhite h-16 w-[90vw] my-6 mx-auto rounded-xl ${
                  selectedExercises.find((exo) => exo.id === exercises[index].id)
                    ? 'border-y-2 border-r-2 border-emerald scale-105'
                    : ''
