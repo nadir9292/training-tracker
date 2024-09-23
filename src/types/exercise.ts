@@ -2,10 +2,10 @@ export interface Exercise {
   id: string
   title: string
   image: string
-  recovery: number
-  parameters: string
+  recovery?: number
+  parameters?: string
   targetedMuscles: string
-  totalTime: number
+  totalTime?: number
   type: string
   userId?: string
   visibility: boolean

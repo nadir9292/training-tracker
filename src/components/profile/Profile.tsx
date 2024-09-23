@@ -66,6 +66,7 @@ const Profile = () => {
           width={120}
           height={120}
           priority
+          quality={100}
           className="rounded-full object-cover ml-[3px] mt-[4px]"
         />
       </div>

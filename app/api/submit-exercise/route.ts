@@ -7,17 +7,15 @@ export async function POST(req: NextRequest) {
   try {
     // change to req !!!
     const data = {
-      image: '',
-      parameters: '{ "repetitions": 0, "weight": 0 }',
-      recovery: '0',
-      targetedMuscles:
-        '[ { "muscle": "Back", "involvement": "primary" }, { "muscle": "Biceps", "involvement": "secondary" }, { "muscle": "Legs", "involvement": "secondary" }, { "muscle": "Core", "involvement": "secondary" } ]',
-      title: 'Rowing Machine',
-      totalTime: '0',
-      type: 'cardio',
-      visibility: true,
-      userId: null,
+      "image": "",
+      "targetedMuscles": 
+        "[   {     \"muscle\": \"Quadriceps\",     \"involvement\": \"primary\"   },   {     \"muscle\": \"Glutes\",     \"involvement\": \"primary\"   },   {     \"muscle\": \"Hamstrings\",     \"involvement\": \"secondary\"   },   {     \"muscle\": \"Calves\",     \"involvement\": \"secondary\"   },   {     \"muscle\": \"Core\",     \"involvement\": \"secondary\"   } ]",
+      "title": "Lunges",
+      "type": "strength",
+      "visibility": true,
+      "userId": null
     }
+    
 
     const newExerciseId = db.collection('exercises').doc().id
 

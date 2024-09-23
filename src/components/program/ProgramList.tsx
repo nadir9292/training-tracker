@@ -5,12 +5,14 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
 import { EffectCards } from 'swiper/modules'
+import Image from 'next/image'
+import { Program } from '@/src/types/programs'
 
-const ProgramList = () => {
-  const programs = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+type Props = { programs: Program[] }
 
+const ProgramList = ({ programs }: Props) => {
   return (
-    <div className="w-[80vw] max-w-96 h-100 px-2 py-4 mt-6 mx-auto opacity-95">
+    <div className="w-[80vw] max-w-128 h-100  mt-6 mx-auto opacity-95">
       <Swiper
         effect={'cards'}
         grabCursor={true}
@@ -18,36 +20,30 @@ const ProgramList = () => {
         className="mySwiper"
         loop={true}
       >
-        {programs.map((program) => (
-          <SwiperSlide className="bg-program object-none object-left-bottom rounded-xl p-2">
-            <h1 className="text-5xl font-happyMonkey text-center uppercase">
-              Full body
-            </h1>
-            <h1 className="text-xl font-happyMonkey text-center italic">
-              cardio
-            </h1>
-            <h1 className="text-xl font-happyMonkey text-center">
-              Total time : 45min
-            </h1>
-            <div className="mt-12">
-              <h1 className="font-happyMonkey text-center">
-                exo 1 <span className="italic text-sm">strength</span>
-              </h1>
-              <h1 className="font-happyMonkey text-center">
-                exo 1 <span className="italic text-sm">strength</span>
-              </h1>
-              <h1 className="font-happyMonkey text-center">
-                exo 1 <span className="italic text-sm">strength</span>
-              </h1>
-              <h1 className="font-happyMonkey text-center">
-                exo 1 <span className="italic text-sm">strength</span>
-              </h1>
-              <h1 className="font-happyMonkey text-center">
-                exo 1 <span className="italic text-sm">strength</span>
-              </h1>
-            </div>
-          </SwiperSlide>
-        ))}
+        {programs.map(
+          ({ id, image, listExercises, title, visibility, userId }) => (
+            <SwiperSlide
+              key={id}
+              className="bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl"
+            >
+              <Image
+                src={image || '/poids.png'}
+                width={400}
+                height={0}
+                priority
+                alt="image programs"
+                className="object-none w-full h-48"
+              />
+              <div className="grid grid-cols-1 gap-2" style={{ zIndex: 100 }}>
+                <h1 className="text-xl mt-2 text-center uppercase">{title}</h1>
+                <h1 className="text-xl text-center">Total time : 45min</h1>
+                <h1 className="text-center bg-wisteria w-fit mx-auto py-1 px-2 outline rounded">
+                  {JSON.parse(listExercises).length} exercises
+                </h1>
+              </div>
+            </SwiperSlide>
+          )
+        )}
       </Swiper>
     </div>
   )
