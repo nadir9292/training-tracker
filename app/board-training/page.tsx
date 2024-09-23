@@ -7,6 +7,7 @@ import { AddIcon } from '@/src/components/SvgRessource'
 import { Program } from '@/src/types/programs'
 import { useSession } from 'next-auth/react'
 import React, { useEffect, useState } from 'react'
+import Wave from 'react-wavify'
 
 export default function page() {
   const { data: session } = useSession()
@@ -55,7 +56,19 @@ export default function page() {
           Create new program
         </span>
       </button>
-      <ProgramList programs={programs} />
+      <Wave
+        fill="#FAF9F6"
+        style={{ height: '90%', zIndex: 10, position: 'absolute' }}
+        paused={false}
+        options={{
+          amplitude: 15,
+          speed: 0.15,
+          points: 3,
+        }}
+      />
+      <div className="fixed z-50 bg-black mt-12 left-1/2 transform -translate-x-1/2 w-[85vw]">
+        <ProgramList programs={programs} />
+      </div>
     </div>
   )
 }
