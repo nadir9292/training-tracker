@@ -46,13 +46,13 @@ const ProgramList = ({ programs, exercises }: Props) => {
             }}
           >
             <div
-              className="grid grid-cols-1 rounded-xl w-full mx-4 h-32 py-2 shadow-xl bg-white/30 backdrop-blur-lg"
+              className="grid grid-cols-1 rounded-xl w-full mx-4 h-32 p-4 shadow-xl bg-white/30 backdrop-blur-lg"
               style={{ zIndex: 0 }}
             >
-              <h1 className="text-center font-extrabold uppercase truncate text-wrap">
+              <h1 className="text-center font-extrabold uppercase truncate text-pretty">
                 {programs[index].title}
               </h1>
-              <h1 className="text-center">45min</h1>
+              <h1 className="text-center"> ≈ 45min</h1>
               <h1 className="text-center">
                 {JSON.parse(programs[index].listExercises).length} exercises
               </h1>

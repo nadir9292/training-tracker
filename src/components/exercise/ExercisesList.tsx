@@ -58,7 +58,7 @@ const ExercisesList = ({ exercises }: Props) => {
               height={50}
               priority
               alt="image exercises"
-              className={`bg-offWhite rounded-xl flex-shrink-0 ${
+              className={`rounded-xl flex-shrink-0 ${
                 selectedExercises.find((exo) => exo.id === exercises[index].id)
                   ? 'border-2 border-emerald scale-105'
                   : ''
@@ -71,22 +71,6 @@ const ExercisesList = ({ exercises }: Props) => {
               {exercises[index].type}
             </h1>
             <div className="flex basis-1/3 overflow-x-auto no-scrollbar max-w-full">
-              {JSON.parse(exercises[index].targetedMuscles).map(
-                (
-                  { muscle, involvement }: any,
-                  index: React.Key | null | undefined
-                ) => (
-                  <div key={index} className="text-xs">
-                    <h1
-                      className={`inline-flex items-center rounded-md p-1 m-[1px] text-xs font-medium text-gray-900 ${
-                        involvement === 'primary' ? 'bg-red-600' : 'bg-red-300'
-                      }`}
-                    >
-                      {muscle}
-                    </h1>
-                  </div>
-                )
-              )}
               {JSON.parse(exercises[index].targetedMuscles).map(
                 (
                   { muscle, involvement }: any,
