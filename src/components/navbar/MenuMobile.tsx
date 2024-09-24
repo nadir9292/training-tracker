@@ -47,7 +47,7 @@ export default function MenuMobile({ isOpen }: Readonly<Props>) {
     <div className="menuNavbar font-happyMonkey flex justify-center items-center inset-x-0 bottom-16">
       <animated.div
         style={{
-          backgroundColor: '#FAF9F6',
+          backgroundColor: '#B6AAF6ff',
           borderRadius: '100px 100px 0px 0px',
           ...props,
         }}

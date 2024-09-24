@@ -4,10 +4,11 @@ import React, { useState } from 'react'
 import { Program } from '@/src/types/programs'
 import { useTrail, animated } from '@react-spring/web'
 import ProgramModal from '@/src/components/program/ProgramModal'
+import { Exercise } from '@/src/types/exercise'
 
-type Props = { programs: Program[] }
+type Props = { programs: Program[]; exercises: Exercise[] }
 
-const ProgramList = ({ programs }: Props) => {
+const ProgramList = ({ programs, exercises }: Props) => {
   const [isOpenProgramModal, setIsOpenProgramModal] = useState<boolean>(false)
   const [selectedProgram, setselectedProgram] = useState<Program>()
 
@@ -46,7 +47,7 @@ const ProgramList = ({ programs }: Props) => {
           >
             <div
               className="grid grid-cols-1 rounded-xl w-full mx-4 h-32 py-2 shadow-xl bg-white/30 backdrop-blur-lg"
-              style={{ zIndex: 100 }}
+              style={{ zIndex: 0 }}
             >
               <h1 className="text-center font-extrabold uppercase truncate text-wrap">
                 {programs[index].title}
@@ -63,6 +64,7 @@ const ProgramList = ({ programs }: Props) => {
         isOpen={isOpenProgramModal}
         program={selectedProgram!}
         toggleOpenModal={toggleModalProgram}
+        exercises={exercises}
       />
     </div>
   )

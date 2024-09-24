@@ -76,7 +76,7 @@ export default function NavBar() {
         <div className="waveContainer">
           <Wave
             className="wave"
-            fill="#FAF9F6"
+            fill="#B6AAF6ff"
             style={{ height: 125, zIndex: 50 }}
             paused={false}
             options={{

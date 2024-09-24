@@ -3,60 +3,61 @@
 import { useAppContext } from '@/src/components/context'
 import Loading from '@/src/components/Loading'
 import ProgramList from '@/src/components/program/ProgramList'
-import { AddIcon, BoardIcon } from '@/src/components/SvgRessource'
+import { BoardIcon } from '@/src/components/SvgRessource'
+import { Exercise } from '@/src/types/exercise'
 import { Program } from '@/src/types/programs'
 import { useSession } from 'next-auth/react'
 import React, { useEffect, useState } from 'react'
-import Wave from 'react-wavify'
-
 export default function page() {
   const { data: session } = useSession()
   const { setError, setIsLoading, error } = useAppContext()
 
   // --------ADD THIS IN COMPONENT-----------------
   const [programs, setPrograms] = useState<Program[]>([])
+  const [exercises, setExercises] = useState<Exercise[]>([])
 
   useEffect(() => {
-    if (!session) {
-      return
-    }
-    const fetchData = async () => {
+    if (!session) return
+
+    const fetchData = async (
+      url: string,
+      setData: React.Dispatch<React.SetStateAction<any[]>>
+    ) => {
       try {
         setIsLoading(true)
-        const response = await fetch('/api/get-program')
-        if (!response.ok) {
-          throw new Error('Error : cannot get data')
-        }
+        const response = await fetch(url)
+        if (!response.ok) throw new Error('Error: cannot get data')
+
         const result = await response.json()
-        setPrograms(result.data)
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          setError(err.message)
-        } else {
-          setError('Error : ', error)
-        }
+        setData(result.data)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error')
       } finally {
         setIsLoading(false)
       }
     }
 
-    fetchData()
+    fetchData('/api/get-program', setPrograms)
+    fetchData('/api/get-exercise', setExercises)
   }, [session])
   // --------ADD THIS IN COMPONENT-----------------
 
-  if (!programs[0]) {
+  if (!programs[0] && !exercises[0]) {
     return <Loading isLoading={true} />
   }
 
   return (
     <div>
-      <button className="flex items-center bg-wisteria px-4 py-2 mt-8 mx-auto rounded-lg shadow-xl">
+      <button
+        onClick={() => window.alert('WORKING PROGRESS :)')}
+        className="flex items-center bg-wisteria px-4 py-2 mt-8 mx-auto rounded-lg shadow-xl"
+      >
         +<BoardIcon width={30} height={30} />
         <span className="ml-2 uppercase font-happyMonkey font-bold">
           Create new program
         </span>
       </button>
-      <ProgramList programs={programs} />
+      <ProgramList programs={programs} exercises={exercises} />
     </div>
   )
 }
