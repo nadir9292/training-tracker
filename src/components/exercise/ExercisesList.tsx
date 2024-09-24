@@ -1,14 +1,15 @@
 'use client'
 
+import { useAppContext } from '@/src/components/context'
 import { Exercise } from '@/src/types/exercise'
 import { useTrail, animated } from '@react-spring/web'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React from 'react'
 
-type Props = { exercises: Exercise[] }
+type Props = { exercises: Exercise[]; isSelectable: boolean }
 
-const ExercisesList = ({ exercises }: Props) => {
-  const [selectedExercises, setSelectedExercises] = useState<Exercise[]>([])
+const ExercisesList = ({ exercises, isSelectable }: Props) => {
+  const { selectedExercises, setSelectedExercises } = useAppContext()
 
   const trails = useTrail(exercises.length, {
     from: { opacity: 0, x: 1000 },
@@ -22,33 +23,37 @@ const ExercisesList = ({ exercises }: Props) => {
     },
   })
 
-  const isDuplicateSelectedExercise = (id: string) => {
-    return selectedExercises?.some((exercise) => exercise.id === id)
-  }
-
   const selectExercise = (id: string) => {
-    if (isDuplicateSelectedExercise(id)) {
-      setSelectedExercises((prev) =>
-        prev.filter((exercise) => exercise.id !== id)
-      )
-    } else {
-      const exerciseToAdd = exercises.find((exercise) => exercise.id === id)
-      if (exerciseToAdd) {
-        setSelectedExercises((prev) => [...prev, exerciseToAdd])
-      }
-    }
+    setSelectedExercises((oldArray: string[]) =>
+      oldArray.includes(id)
+        ? oldArray.filter((exerciseId) => exerciseId !== id)
+        : [...oldArray, id]
+    )
   }
 
   return (
     <div>
+      {selectedExercises.length > 0 ? (
+        <button
+          type="button"
+          className="bg-coralRed text-xs right-0 mr-4 top-48 font-bold h-9 absolute z-50 px-1 py-2 border border-gray-900 rounded-full"
+          onClick={() => setSelectedExercises([])}
+        >
+          CLEAR
+        </button>
+      ) : (
+        <div></div>
+      )}
       {trails.map((props, index) => (
         <animated.div style={{ ...props }} key={index}>
           <div
             key={exercises[index].id}
-            onClick={() => selectExercise(exercises[index].id)}
+            onClick={() =>
+              isSelectable ? selectExercise(exercises[index].id) : undefined
+            }
             className={`flex flex-row gap-2 items-center font-montserrat text-sm my-1 mx-auto rounded-xl ${
-              selectedExercises.find((exo) => exo.id === exercises[index].id)
-                ? 'border-y-2 border-r-2 border-emerald scale-105'
+              selectedExercises.find((id: string) => id === exercises[index].id)
+                ? 'border-2  border-emerald scale-90'
                 : ''
             }`}
           >
@@ -58,11 +63,7 @@ const ExercisesList = ({ exercises }: Props) => {
               height={50}
               priority
               alt="image exercises"
-              className={`rounded-xl flex-shrink-0 ${
-                selectedExercises.find((exo) => exo.id === exercises[index].id)
-                  ? 'border-2 border-emerald scale-105'
-                  : ''
-              }`}
+              className="rounded-xl flex-shrink-0"
             />
             <h1 className="font-bold uppercase flex-1 basis-1/3">
               {exercises[index].title}

@@ -24,11 +24,11 @@ const ProgramModal = ({
     if (program && program.listExercises) {
       setExercisesProgram(
         exercises.filter((exercise) =>
-          program.listExercises.includes(exercise.id)
+          program?.listExercises?.includes(exercise.id)
         )
       )
     }
-  }, [program])
+  }, [program, exercises])
 
   const styles = useSpring({
     scale: isOpen ? 1 : 0.1,
@@ -65,7 +65,7 @@ const ProgramModal = ({
       <div className="relative flex items-center justify-center h-32 w-full rounded-xl overflow-hidden">
         <Image
           className="absolute inset-0 w-full h-full object-cover"
-          src={program.image}
+          src={program.image || '/poids.png'}
           height={1000}
           width={1000}
           quality={50}
@@ -79,7 +79,7 @@ const ProgramModal = ({
         {program.title}
       </h1>
       <div className="overflow-y-auto overflow-x-hidden mt-2 flex-1">
-        <ExercisesList exercises={exercisesProgram} />
+        <ExercisesList exercises={exercisesProgram} isSelectable={false} />
       </div>
     </animated.div>
   )

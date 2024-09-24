@@ -2,13 +2,16 @@
 
 import { useAppContext } from '@/src/components/context'
 import Loading from '@/src/components/Loading'
+import AddProgramModal from '@/src/components/program/AddProgramModal'
 import ProgramList from '@/src/components/program/ProgramList'
 import { BoardIcon } from '@/src/components/SvgRessource'
 import { Exercise } from '@/src/types/exercise'
 import { Program } from '@/src/types/programs'
 import { useSession } from 'next-auth/react'
 import React, { useEffect, useState } from 'react'
+
 export default function page() {
+  const [isOpenAddProgram, setIsOpenAddProgram] = useState<boolean>(false)
   const { data: session } = useSession()
   const { setError, setIsLoading, error } = useAppContext()
 
@@ -49,7 +52,7 @@ export default function page() {
   return (
     <div>
       <button
-        onClick={() => window.alert('WORKING PROGRESS :)')}
+        onClick={() => setIsOpenAddProgram(!isOpenAddProgram)}
         className="flex items-center bg-wisteria px-4 py-2 mt-8 mx-auto rounded-lg shadow-xl"
       >
         +<BoardIcon width={30} height={30} />
@@ -58,6 +61,10 @@ export default function page() {
         </span>
       </button>
       <ProgramList programs={programs} exercises={exercises} />
+      <AddProgramModal
+        isOpen={isOpenAddProgram}
+        toggleOpenModal={() => setIsOpenAddProgram(!isOpenAddProgram)}
+      />
     </div>
   )
 }

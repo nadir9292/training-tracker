@@ -7,9 +7,9 @@ import { Exercise } from '@/src/types/exercise'
 import { useSession } from 'next-auth/react'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 
-type Props = {}
+type Props = { isSelectable: boolean }
 
-const SelectExerciseModal = ({}: Props) => {
+const SelectExerciseModal = ({ isSelectable }: Props) => {
   const [exercises, setExercise] = useState<Exercise[]>()
   const [searchedExercises, setSearchedExercises] = useState<Exercise[]>()
   const [query, setQuery] = useState('')
@@ -80,7 +80,10 @@ const SelectExerciseModal = ({}: Props) => {
             value={query}
           />
         </div>
-        <ExercisesList exercises={searchedExercises || []} />
+        <ExercisesList
+          isSelectable={isSelectable}
+          exercises={searchedExercises || []}
+        />
       </div>
     </div>
   )

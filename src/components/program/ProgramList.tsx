@@ -53,9 +53,6 @@ const ProgramList = ({ programs, exercises }: Props) => {
                 {programs[index].title}
               </h1>
               <h1 className="text-center"> ≈ 45min</h1>
-              <h1 className="text-center">
-                {JSON.parse(programs[index].listExercises).length} exercises
-              </h1>
             </div>
           </div>
         </animated.div>

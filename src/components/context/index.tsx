@@ -1,5 +1,6 @@
 'use client'
 
+import { Exercise } from '@/src/types/exercise'
 import { createContext, useContext, useState } from 'react'
 
 const AppContext = createContext<any>(undefined)
@@ -10,6 +11,7 @@ export const AppWrapper = ({ children }: { children: React.ReactNode }) => {
   const [isOpenPopup, setIsOpenPopup] = useState(false)
   const [isOpenMenuNavbar, setIsOpenMenuNavbar] = useState(false)
   const [userContext, setUserContext] = useState(null)
+  const [selectedExercises, setSelectedExercises] = useState<string[]>([])
 
   return (
     <AppContext.Provider
@@ -19,6 +21,8 @@ export const AppWrapper = ({ children }: { children: React.ReactNode }) => {
         isOpenMenuNavbar,
         userContext,
         isOpenPopup,
+        selectedExercises,
+        setSelectedExercises,
         setIsOpenPopup,
         setError,
         setIsLoading,
