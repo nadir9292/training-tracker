@@ -13,26 +13,29 @@ import React, { useEffect, useState } from 'react'
 export default function page() {
   const [isOpenAddProgram, setIsOpenAddProgram] = useState<boolean>(false)
   const { data: session } = useSession()
-  const { setError, setIsLoading, error } = useAppContext()
+  const { setError, setIsLoading, userContext } = useAppContext()
 
   // --------ADD THIS IN COMPONENT-----------------
   const [programs, setPrograms] = useState<Program[]>([])
   const [exercises, setExercises] = useState<Exercise[]>([])
 
   useEffect(() => {
-    if (!session) return
+    if (!session || programs.length > 0 || exercises.length > 0) return
 
-    const fetchData = async (
-      url: string,
-      setData: React.Dispatch<React.SetStateAction<any[]>>
-    ) => {
+    const fetchData = async () => {
       try {
         setIsLoading(true)
-        const response = await fetch(url)
-        if (!response.ok) throw new Error('Error: cannot get data')
+        const responsePrograms = await fetch('/api/get-program')
+        const responseExercises = await fetch('/api/get-exercise')
 
-        const result = await response.json()
-        setData(result.data)
+        if (!responsePrograms.ok || !responseExercises.ok)
+          throw new Error('Error fetching data')
+
+        const programsResult = await responsePrograms.json()
+        const exercisesResult = await responseExercises.json()
+
+        setPrograms(programsResult.data)
+        setExercises(exercisesResult.data)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unknown error')
       } finally {
@@ -40,9 +43,8 @@ export default function page() {
       }
     }
 
-    fetchData('/api/get-program', setPrograms)
-    fetchData('/api/get-exercise', setExercises)
-  }, [session])
+    fetchData()
+  }, [session, programs, exercises])
   // --------ADD THIS IN COMPONENT-----------------
 
   if (!programs[0] && !exercises[0]) {

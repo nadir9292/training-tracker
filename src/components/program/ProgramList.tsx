@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Program } from '@/src/types/programs'
 import { useTrail, animated } from '@react-spring/web'
 import ProgramModal from '@/src/components/program/ProgramModal'
@@ -9,8 +9,19 @@ import { Exercise } from '@/src/types/exercise'
 type Props = { programs: Program[]; exercises: Exercise[] }
 
 const ProgramList = ({ programs, exercises }: Props) => {
+  const [windowHeight, setWindowHeight] = useState(0)
+  const [mounted, setMounted] = useState(false)
   const [isOpenProgramModal, setIsOpenProgramModal] = useState<boolean>(false)
   const [selectedProgram, setselectedProgram] = useState<Program>()
+
+  useEffect(() => {
+    setMounted(true)
+    const handleWindowResize = () => setWindowHeight(window.innerHeight)
+
+    handleWindowResize()
+    window.addEventListener('resize', handleWindowResize)
+    return () => window.removeEventListener('resize', handleWindowResize)
+  }, [])
 
   const toggleModalProgram = () => {
     setIsOpenProgramModal(!isOpenProgramModal)
@@ -33,8 +44,15 @@ const ProgramList = ({ programs, exercises }: Props) => {
     },
   })
 
+  if (!mounted) {
+    return null
+  }
+
   return (
-    <div className="grid grid-cols-2 gap-2 text-sm max-h-[75vh] mt-4 py-2 px-4">
+    <div
+      className="grid grid-cols-2 gap-2 text-sm mt-4 py-2 px-4 overflow-y-auto"
+      style={{ height: windowHeight - 210 }}
+    >
       {trails.map((props, index) => (
         <animated.div style={{ ...props }} key={index}>
           <div

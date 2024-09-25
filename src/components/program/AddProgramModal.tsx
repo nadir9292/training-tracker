@@ -32,13 +32,25 @@ const AddProgramModal = ({ isOpen, toggleOpenModal }: Props) => {
     e.preventDefault()
     const body: Program = {
       id: programSelected?.id,
-      image: programSelected?.image,
-      listExercises: selectedExercises,
+      image:
+        'https://firebasestorage.googleapis.com/v0/b/training-tracker-7f304.appspot.com/o/programs-images%2Flow-angle-view-mans-legs-walking-past-dumbbells-gym.jpg?alt=media&token=1cca4bbc-2eaf-4ed5-a9e1-10b4d95482c0',
+      listExercises: JSON.stringify(selectedExercises),
       title: programSelected?.title,
       visibility: true, // CHANGE THIS
-      userId: undefined, // CHANGE THIS
+      userId: null, // CHANGE THIS
     }
-    console.log(body)
+    try {
+      const response = await fetch('/api/submit-program', {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(body),
+      })
+
+      const { data } = await response.json()
+      if (data) {
+        window.alert(`Your program has been created`)
+      }
+    } catch (error) {}
   }
 
   if (!mounted) {

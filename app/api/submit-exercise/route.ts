@@ -1,4 +1,4 @@
-import { db } from '@/src/lib/firebaseAdmin' // Assurez-vous que l'initialisation de Firebase est correcte
+import { db } from '@/src/lib/firebaseAdmin'
 import { NextRequest, NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'

@@ -3,6 +3,6 @@ export interface Program {
   title?: string
   image?: string
   listExercises?: string
-  userId?: string
+  userId?: string | null
   visibility?: boolean
 }
