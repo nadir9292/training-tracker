@@ -1,3 +1,4 @@
+import AdBanner from '@/src/components/AdBanner'
 import ButtonAuth from '@/src/components/auth/ButtonsAuth'
 import SignInForm from '@/src/components/auth/SignInForm'
 import { Provider } from '@/src/types/provider'
@@ -31,6 +32,7 @@ export default function page() {
       >
         Don't have an account?
       </Link>
+      <AdBanner />
     </div>
   )
 }

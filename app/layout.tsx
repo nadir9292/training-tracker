@@ -5,6 +5,7 @@ import { AppWrapper } from '@/src/components/context'
 import { SessionProvider } from 'next-auth/react'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/react'
+import Adsense from '@/src/components/Adsense'
 
 const APP_NAME = 'Training Tracker'
 const APP_DEFAULT_TITLE = 'Training Tracker'
@@ -53,15 +54,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content={APP_DEFAULT_TITLE} />
         <meta name="description" content={APP_DESCRIPTION} />
-        <meta
-          name="google-adsense-account"
-          content="ca-pub-4847656285495869"
-        ></meta>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4847656285495869"
-          crossOrigin="anonymous"
-        ></script>
+        <Adsense pId="ca-pub-4847656285495869" />
       </Head>
       <body>
         <SessionProvider>
