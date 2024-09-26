@@ -8,6 +8,7 @@ import Wave from 'react-wavify'
 import {
   AddIcon,
   BoardIcon,
+  CalandarIcon,
   ChartIcon,
   ChevronIcon,
   HomeIcon,
@@ -114,11 +115,11 @@ export default function NavBar() {
               </div>
 
               <TransitionLink
-                href="/chart-training"
+                href="/event-training"
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
-                <ChartIcon height={42} width={42} />
-                <span>Stats</span>
+                <CalandarIcon height={42} width={42} />
+                <span>Date</span>
               </TransitionLink>
 
               <TransitionLink
