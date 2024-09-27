@@ -10,10 +10,11 @@ import Adsense from '@/src/components/ads/Adsense'
 const APP_NAME = 'Training Tracker'
 const APP_DEFAULT_TITLE = 'Training Tracker'
 const APP_TITLE_TEMPLATE = '%s - Training Tracker'
-const APP_DESCRIPTION = 'By Nadir Mansouri :)'
+const APP_DESCRIPTION =
+  'Track your workouts and progress with Training Tracker by Nadir Mansouri.'
 
 export const viewport: Viewport = {
-  themeColor: '##8286fd',
+  themeColor: '#8286fd',
 }
 
 export const metadata = {
@@ -50,6 +51,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
+        <meta
+          name="keywords"
+          content="bodybuilding program, bodybuilding web app, sports training app, muscle building program, bodybuilding workout plans, fitness training app, strength training, bodybuilding routines, online bodybuilding coach, muscle gain app, weightlifting program, fitness app for bodybuilders, sport fitness programs, custom workout plans, bodybuilding training schedules, bodybuilding app for beginners, professional bodybuilding training, bodybuilding progress tracker, gym workout app, fitness goals bodybuilding"
+        />
+        <meta
+          name="description"
+          content="Achieve your bodybuilding goals with our comprehensive sports program web app. Customize workout plans, track progress, and access professional bodybuilding routines. Perfect for beginners and seasoned athletes. Start building muscle today!"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Nadir Mansouri" />
+
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content={APP_DEFAULT_TITLE} />
