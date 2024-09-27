@@ -8,7 +8,7 @@ type Props = { isOpen: boolean; toggleOpenModal: any }
 const AddProgramModal = ({ isOpen, toggleOpenModal }: Props) => {
   const { selectedExercises } = useAppContext()
   const [windowHeight, setWindowHeight] = useState(0)
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState<boolean>(false)
   const [programSelected, setProgramSelected] = useState<Program>()
 
   useEffect(() => {

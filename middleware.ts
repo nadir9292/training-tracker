@@ -8,7 +8,6 @@ const protectedRoutes = [
   '/about',
   '/add-training',
   '/board-training',
-  '/event-training',
   '/chart-training',
   '/stats-training',
 ]

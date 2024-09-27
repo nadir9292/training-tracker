@@ -1,6 +1,7 @@
 'use client'
 
 import { useAppContext } from '@/src/components/context'
+import ProgramCalandar from '@/src/components/event/Calandar'
 import Loading from '@/src/components/Loading'
 import AddMoreInfo from '@/src/components/profile/AddMoreInfo'
 import Typewriter from '@/src/components/Typewriter'
@@ -76,17 +77,18 @@ export default function Index() {
         toggleModal={() => setIsOpenFormProfile(!isOpenFormProfile)}
         userFormData={userContext}
       />
-      <div className="py-4 w-80 md:w-192 mx-auto mt-4 md:mt-24">
+      <div >
         <h1 className="text-center font-passion text-offWhite text-6xl font-extrabold -mb-8 text-shadow-sm shadow-gray-900/50">
           TRAINING
         </h1>
-        <h1 className="text-center text-4xl text-offWhite font-orbitron mb-16 text-shadow-sm shadow-gray-900/50">
+        <h1 className="text-center text-4xl text-offWhite font-orbitron mb-10 text-shadow-sm shadow-gray-900/50">
           <Typewriter
             style="text-center uppercase font-orbitron underline text-offWhite text-4xl md:text-6xl font-bold"
             text=".tracker"
             delay={100}
           />
         </h1>
+        <ProgramCalandar />
       </div>
     </>
   )

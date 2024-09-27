@@ -125,7 +125,7 @@
 }
 
 .react-calendar__tile--hasActive {
-  background: #76baff;
+  background: #e8ff76;
 }
 
 .react-calendar__tile--hasActive:enabled:hover,
@@ -145,4 +145,9 @@
 
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
+}
+
+.event-day {
+  background-color: #6500d1;
+  color: white;
 }

@@ -1,15 +1,26 @@
 'use client'
 
 import { useAppContext } from '@/src/components/context'
+import Loading from '@/src/components/Loading'
 import { Exercise } from '@/src/types/exercise'
 import { useTrail, animated } from '@react-spring/web'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 type Props = { exercises: Exercise[]; isSelectable: boolean }
 
 const ExercisesList = ({ exercises, isSelectable }: Props) => {
   const { selectedExercises, setSelectedExercises } = useAppContext()
+
+  const [isReady, setIsReady] = useState(false)
+
+  useEffect(() => {
+    if (exercises.length > 0) {
+      setIsReady(true)
+    } else {
+      setIsReady(false)
+    }
+  }, [exercises])
 
   const trails = useTrail(exercises.length, {
     from: { opacity: 0, x: 1000 },
@@ -29,6 +40,10 @@ const ExercisesList = ({ exercises, isSelectable }: Props) => {
         ? oldArray.filter((exerciseId) => exerciseId !== id)
         : [...oldArray, id]
     )
+  }
+
+  if (!isReady) {
+    return <Loading isLoading={true} />
   }
 
   return (

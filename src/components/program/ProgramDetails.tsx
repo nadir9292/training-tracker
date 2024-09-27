@@ -12,7 +12,7 @@ type Props = {
   exercises: Exercise[]
 }
 
-const ProgramModal = ({
+const ProgramDetails = ({
   isOpen,
   program,
   toggleOpenModal,
@@ -85,4 +85,4 @@ const ProgramModal = ({
   )
 }
 
-export default ProgramModal
+export default ProgramDetails

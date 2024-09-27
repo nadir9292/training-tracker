@@ -115,11 +115,11 @@ export default function NavBar() {
               </div>
 
               <TransitionLink
-                href="/event-training"
+                href="/chart-training"
                 className="rounded-xl w-full text-sm flex flex-col items-center justify-center font-bold text-gray-900"
               >
-                <CalandarIcon height={42} width={42} />
-                <span>Date</span>
+                <ChartIcon height={42} width={42} />
+                <span>Stats</span>
               </TransitionLink>
 
               <TransitionLink

@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from 'react'
 import { Program } from '@/src/types/programs'
 import { useTrail, animated } from '@react-spring/web'
-import ProgramModal from '@/src/components/program/ProgramModal'
 import { Exercise } from '@/src/types/exercise'
+import ProgramItem from '@/src/components/program/ProgramItem'
+import ProgramDetails from '@/src/components/program/ProgramDetails'
 
 type Props = { programs: Program[]; exercises: Exercise[] }
 
@@ -50,32 +51,19 @@ const ProgramList = ({ programs, exercises }: Props) => {
 
   return (
     <div
-      className="grid grid-cols-2 gap-2 text-sm mt-4 py-2 px-4 overflow-y-auto"
+      className="grid grid-cols-2 gap-2 text-sm mt-4 py-2 px-4 overflow-y-auto overflow-x-hidden"
       style={{ height: windowHeight - 210 }}
     >
       {trails.map((props, index) => (
         <animated.div style={{ ...props }} key={index}>
-          <div
-            onClick={() => openProgramModal(programs[index])}
-            key={index}
-            className="h-48 rounded-2xl shadow-xl bg-cover bg-center flex items-center justify-center"
-            style={{
-              backgroundImage: `url(${programs[index].image})`,
-            }}
-          >
-            <div
-              className="grid grid-cols-1 rounded-xl w-full mx-4 h-32 p-4 shadow-xl bg-white/30 backdrop-blur-lg"
-              style={{ zIndex: 0 }}
-            >
-              <h1 className="text-center font-extrabold uppercase truncate text-pretty">
-                {programs[index].title}
-              </h1>
-              <h1 className="text-center"> ≈ 45min</h1>
-            </div>
-          </div>
+          <ProgramItem
+            program={programs[index]}
+            index={index}
+            openProgramModal={openProgramModal}
+          />
         </animated.div>
       ))}
-      <ProgramModal
+      <ProgramDetails
         isOpen={isOpenProgramModal}
         program={selectedProgram!}
         toggleOpenModal={toggleModalProgram}
