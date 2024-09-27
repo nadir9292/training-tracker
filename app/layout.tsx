@@ -66,6 +66,12 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content={APP_DEFAULT_TITLE} />
         <meta name="description" content={APP_DESCRIPTION} />
+        <meta
+          property="twitter:image"
+          content="Twitter link preview image URL"
+        />
+        <meta property="og:image" content="Link preview image URL" />
+        <meta property="og:url" content="Canonical link preview URL" />
         <script
           async
           custom-element="amp-ad"
